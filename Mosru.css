@@ -249,7 +249,7 @@ align-items: center;
 .header2{
 position: fixed;
 background: #fff;
-top: 9%;
+top: 65px;
 z-index: 100;
 height: 10%;
 width: 100%;
@@ -321,7 +321,7 @@ box-shadow: 0 0 20px #DCDCDC;
 .slider-dots {
     position: absolute;
     width: 50%;
-    bottom: 30%;
+    top: 80%;
     z-index: 998;
     left: 10%;
 }
@@ -336,7 +336,7 @@ box-shadow: 0 0 20px #DCDCDC;
     z-index: 100;
     border-radius: 50%;
     display: inline-block;
-    transition: background-color 0.6s ease;
+    transition: background-color .6s ease;
 }
 .active,
 .slider-dots_item:hover {
@@ -360,7 +360,7 @@ box-shadow: 0 0 20px #DCDCDC;
 }
 @keyframes fade {
     from {
-        opacity: .4
+        opacity: 1
     }
     to {
         opacity: 1
@@ -519,14 +519,14 @@ box-shadow: 0 0 20px #DCDCDC;
 
 .books_block{
     margin-top: 2%;
-    width: 70%;
-    margin-left: 0%;
-    margin-left: 30%;
+    width: 1000px;
+    height: auto;
+    margin-left: 30%; 
 }
 
 .book{
     text-decoration: none;
-    width: 10%;
+    width: 120px;
     height: 250px;
     padding: 10px;
     margin-right: 5%;
@@ -535,10 +535,28 @@ box-shadow: 0 0 20px #DCDCDC;
     display: inline-block;
 }
 
+.book_name_image{
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    font-size: 60%;
+    height: 25px;
+    line-height: 12px;
+    color: #333;
+}
+
+.book_author_image{
+    position: absolute;
+    left: 15%;
+    top: 20%;
+    font-size: 50%;
+    color: #AEB4BA;
+}
+
 
 .book_name{
     position: absolute;
-    left: 5%;
+    left: 10%;
     bottom: 15%;
     font-size: 80%;
     height: 25px;
@@ -548,7 +566,7 @@ box-shadow: 0 0 20px #DCDCDC;
 
 .book_author{
     position: absolute;
-    left: 5%;
+    left: 10%;
     bottom: 10%;
     font-size: 60%;
     color: #AEB4BA;
@@ -616,9 +634,15 @@ box-shadow: 0 0 20px #DCDCDC;
     right: 2%;
     top: 40%;
     width: 2%;
-    height: 0%;
+    height: 0;
     cursor: pointer;
     z-index: 1;
+}
+
+.menuToggle{
+    width: 2%;
+    height: 40%;
+    background-color: transparent;
 }
 
 .hamburger {
@@ -730,7 +754,8 @@ box-shadow: 0 0 20px #DCDCDC;
 }
 
 .User_info{
-    margin-bottom: 10%;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .User_parametr{
