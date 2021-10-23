@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mosru</title>
 </head>
 <body>
@@ -28,7 +29,12 @@
     </div>
 </div>
     <div class="User">
-    <div class="User_photo"><img src="Images/slide.png"></div>
+        <div class="container">
+            <div class="User_photo"><img src="Images/slide.png" class="User_image" id="User_image"></div>
+            <div class="overlay">
+                <div class="photo_change"><img src="Images/camera.svg"></div>
+            </div>
+        </div>
     <div class="User_info">
         <div class="User_parametr"><b>Фамилия:</b>  Музафаров</div>
         <div class="User_parametr"><b>Имя:</b>  Карим</div>
