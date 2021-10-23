@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Mosru.css">
     <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Mosru</title>
 </head>
@@ -18,10 +18,10 @@
     Москвы</div>
 
     <div class="entrance_form">
-    <form method="post" action="Books.html">
+    <form method="post" action="/login">
         <input type="text" onkeyup="checkParams()" id="login" class="input_entrance" placeholder="Логин(телефон, email или СНИЛС)">
         <input type="password" onkeyup="checkParams()" id="password" class="input_entrance" placeholder="Введите пароль">
-           
+
         <div class="entrance_button">
         	<input type="submit" id="submit" value="Войти" disabled>
         </div>
@@ -32,7 +32,7 @@
 
 
    <div class="registration_form">
-     <form method="post" action="Books.html">
+     <form method="post" action="/register">
       <input type="text" onkeyup="checkParams()" id="name" class="input_entrance" placeholder="Фамилия">
         <input type="text" onkeyup="checkParams()" id="surname" class="input_entrance" placeholder="Имя">
         <input type="text" onkeyup="checkParams()" id="date" class="input_entrance" placeholder="Дата рождения" onfocus="(this.type='date')" onblur="(this.type='text')">

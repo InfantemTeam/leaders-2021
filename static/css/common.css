@@ -1,0 +1,201 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+	background-color: #fff;
+	font-weight: 100;
+	opacity: 1;
+}
+
+*,
+*:before
+*:after {
+	box-sizing: border-box;
+}
+
+hr {
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin: 40px 0;
+	border: 0;
+}
+
+button {
+	cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.spacer {
+	margin-top: 5%;
+}
+
+.spacerReg {
+	padding-top: 100px;
+	font-size: .1px;
+	color: #fff;
+}
+
+.entrance_window {
+	padding-top: 20px;
+	position: relative;
+	top: 100px;
+	margin-bottom: 100px;
+	width: 37%;
+	margin-left: 31%;
+	height: 600px;
+	box-shadow: 0 0 20px #DCDCDC;
+}
+
+.entrance_window.active {
+	height: 800px;
+}
+
+.entr_logo {
+	top: 70px;
+	left: 10%;
+	width: 10%;
+	position: absolute;
+}
+
+.entr_logo img {
+	width: 100%;
+}
+
+.entrance_title {
+	font-size: 170%;
+	width: 70%;
+	margin-top: 7%;
+	margin-left: 25%;
+	font-weight: bolder;
+}
+
+.entrance_subtitle {
+	font-size: 120%;
+	text-align: center;
+	width: 60%;
+	margin-left: 20%;
+	margin-top: 5%;
+}
+
+.registration_form {
+	display: none;
+}
+
+.registration_form.active {
+	display: block;
+}
+
+.entrance_form {
+	display: block;
+}
+
+.entrance_form.active {
+	display: none;
+}
+
+.input_entrance {
+	width: 76%;
+	font-size: 90%;
+	margin-left: 10%;
+	margin-top: 5%;
+	padding: 10px;
+	border: 1px solid #C0C0C0;
+}
+
+.input_entrance:hover {
+	border: 1px solid #1E90FF;
+}
+
+.forgot_password {
+	text-decoration: none;
+	position: absolute;
+	right: 10%;
+	margin-top: -4%;
+}
+
+.forgot_password:  hover {
+	color: #ff0000;
+}
+
+.entrance_button {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5%;
+}
+
+.entrance_button input {
+	width: 100%;
+	font-size:  120%;
+	padding: 10px;
+	color: #fff;
+	background-color: #1E90FF;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+.entrance_button input: hover {
+	background-color: #3B95E2;
+}
+
+.or {
+	display: flex;
+	justify-content: center;
+	margin-top: 5%;
+
+}
+
+.VK {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 5%;
+	padding: 10px 26% 10px 22%;
+	background-color: #0077FF;
+	text-decoration: none;
+	color: #fff;
+}
+
+.VK img {
+	position: absolute;
+	margin-top: -5px;
+	margin-left: 20px;
+}
+
+.telegram {
+	margin-left: 10%;
+	margin-top: 10%;
+	padding: 10px 28% 10px 22%;
+	background-color: #1E90FF;
+	text-decoration: none;
+	color: #fff;
+}
+
+.telegram img {
+	position: absolute;
+	margin-top: -5px;
+	margin-left: 30px;
+}
+
+.vk_auth {
+	position: fixed;
+	left: 42%;
+}
+
+.registration {
+	text-align: center;
+}
+
+.registration_a {
+	text-decoration: none;
+	color: #50A0E4;
+	cursor: pointer;
+}
