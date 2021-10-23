@@ -47,17 +47,29 @@ input::-webkit-inner-spin-button {
     margin-top: 5%;
 }
 
+.spacerReg{
+    padding-top: 100px;
+    font-size: .1px;
+    color: #fff;
+}
+
 .entrance_window{
-    position: absolute;
-    top: 200px;
+    padding-top: 20px;
+    position: relative;
+    top: 100px;
+    margin-bottom: 100px;
     width: 37%;
-    left: 31%;
-    height: 700px;
+    margin-left: 31%;
+    height: 600px;
     box-shadow: 0 0 20px #DCDCDC;
 }
 
+.entrance_window.active{
+    height: 800px;
+}
+
 .entr_logo{
-    top: 7%;
+    top: 70px;
     left: 10%;
     width: 10%;
     position: absolute;
@@ -82,6 +94,23 @@ input::-webkit-inner-spin-button {
     margin-left: 20%;
     margin-top: 5%;
 }
+
+.registration_form{
+    display: none;
+}
+
+.registration_form.active{
+    display: block;
+}
+
+.entrance_form{
+    display: block;
+}
+
+.entrance_form.active{
+    display: none;
+}
+
 
 
 .input_entrance{
@@ -181,6 +210,7 @@ input::-webkit-inner-spin-button {
 .registration_a{
     text-decoration: none;
     color: #50A0E4;
+    cursor: pointer;
 }
 
 /*Страница с книгами*/
@@ -189,7 +219,7 @@ position: fixed;
 background: #CC2222;
 top: 0;
 z-index: 1000;
-height: 10%;
+height: 70px;
 width: 100%;
 display: flex;
 justify-content: space-between;
@@ -213,6 +243,7 @@ align-items: center;
     color: #fff;
     right: 10%;
     font-size: 120%;
+    z-index: 1;
 }
 
 .header2{
@@ -558,8 +589,6 @@ box-shadow: 0 0 20px #DCDCDC;
         background: #CC2222;
         opacity: 1;
         width: 20%;
-        height: 250%;
-        z-index: 1;
         margin-left: -20%;
         padding-left: 0px;
     }
