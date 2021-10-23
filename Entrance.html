@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Mosru.css">
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Mosru</title>
+</head>
+<body>
+
+<div class="entrance_window">
+	<div class="entr_logo"><img src="Images/logo.png"></div>
+    <div class="entrance_title">Доступ к информационным ресурсам города Москвы</div>
+    <div class="entrance_subtitle">Вход на Официальный сайт Мэра
+    Москвы</div>
+    <form method="post" action="Books.html">
+        <input type="text" onkeyup="checkParams()" id="login" class="input_entrance" placeholder="Логин(телефон, email или СНИЛС)">
+        <input type="password" onkeyup="checkParams()" id="password" class="input_entrance" placeholder="Введите пароль">
+           
+        <div class="entrance_button">
+        	<input type="submit" id="submit" value="Войти" disabled>
+        </div>
+    </form>
+
+    <div class="or">или</div>
+    <div class="spacer"></div>
+    <a class="VK popup-link" href="#popup">Войти через Вконтакте<img src="Images/VK.svg"></a>
+    <div class="spacer"></div>
+    <a class="telegram popup-link" href="#popup2">Войти через Telegram<img src="Images/Telegram.svg"></a>
+    <div id="popup2" class="mfp-hide">
+   <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="Test_testvotBot" data-size="large" data-userpic="false" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+<script type="text/javascript">
+  function onTelegramAuth(user) {
+    alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+  }
+</script>
+</div>
+
+
+<div id="popup" class="mfp-hide">
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">
+  VK.init({apiId: 7976362});
+</script>
+
+<!-- VK Widget -->
+<div id="vk_auth" class="vk_auth"></div>
+<script type="text/javascript">
+  VK.Widgets.Auth("vk_auth", {"authUrl":"/dev/Login"});
+</script>
+</div>
+<div class="spacer"></div>
+<div class="registration">Еще не были на нашем сайте <a href="Registation.html" class="registration_a">Зарегестрироваться</a></div>
+</div>
+
+
+<script src="gQuerry-3.5.1.min.js"></script>
+<script src="magnific-popup/magnific-popup.js"></script>
+<script src="JS/window.js"></script>
+<script src="JS/Entrance.js"></script>
+</body>
+</html>
