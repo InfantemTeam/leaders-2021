@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block head %}
-	<link rel="stylesheet" href="/static/css/login.css">
-
 	<script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
 	<script async src="https://telegram.org/js/telegram-widget.js?15"></script>
+
+	<link rel="stylesheet" href="/static/css/login.css">
 
 	<script src="/static/js/login.js"></script>
 {% endblock %}
@@ -39,7 +39,7 @@
 
 		<div class="or">или</div>
 
-		<button type="submit" id="vk" class="popup-link"> <!--href="#popup"-->
+		<button type="submit" id="vk" class="popup-link">
 			<img src="/static/img/spinner.gif" class="spinner">
 			Войти через ВКонтакте
 			<img src="/static/img/vk.svg" class="logo">
@@ -50,10 +50,6 @@
 			Войти через Telegram
 			<img src="/static/img/telegram.svg" class="logo">
 		</button>
-
-		<!--<div id="popup" class="mfp-hide">
-			<iframe src="https://oauth.vk.com/authorize?client_id=7980616&display=popup&redirect_uri=https://leaders.sdore.me/oauth/vk&response_type=code&v=5.131"></iframe>
-		</div>-->
 
 		<div class="login_form"><div class="registration">Впервые на сайте? <a id="show_reg">Зарегистрироваться</a></div></div>
 		<div class="registration_form"><div class="registration">Уже были на нашем сайте? <a id="hide_reg">Войти</a></div></div>

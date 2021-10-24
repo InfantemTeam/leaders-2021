@@ -1,53 +1,51 @@
-var slideNow = 0,
-    slideInterval = 9000,
-    slideCount;
+const slideInterval = 9000;
 
 $(document).ready(function() {
-	slideCount = $('#slidewrapper').children().length;
+	$('.slider-viewport').each(function() {
+		let e = this;
 
-	let switchInterval = setInterval(nextSlide, slideInterval);
+		e.slideCount = $(this).find('.slidewrapper').children().length;
+		e.slideNow = 0;
 
-	$('#viewport').hover(function() {
-		clearInterval(switchInterval);
-	}, function() {
-		switchInterval = setInterval(nextSlide, slideInterval);
-	});
+		$(this).hover(function() {
+			clearInterval(e.switchInterval);
+		}, function() {
+			e.switchInterval = setInterval(function() { nextSlide(e); }, slideInterval);
+		});
+		e.switchInterval = setInterval(function() { nextSlide(e); }, slideInterval);
 
-	$('#next-btn').click(function() {
-		nextSlide();
-	});
+		$(this).find('.next-btn').click(function() {
+			nextSlide(e);
+		});
 
-	$('#prev-btn').click(function() {
-		prevSlide();
-	});
+		$(this).find('.prev-btn').click(function() {
+			prevSlide(e);
+		});
 
-	$('.slide-nav-btn').click(function() {
-		let navBtnId = $(this).index();
+		$(this).find('.slide-nav-btn').click(function() {
+			let navBtnId = $(this).index();
 
-		if (navBtnId != slideNow) {
-			slideNow = navBtnId;
-			updateSlide();
-		}
+			if (navBtnId != e.slideNow) {
+				e.slideNow = navBtnId;
+				updateSlide(e);
+			}
+		});
 	});
 });
 
-function nextSlide() {
-	if (slideNow >= slideCount-1) slideNow = 0;
-	else slideNow++;
-	updateSlide();
+function nextSlide(slider) {
+	if (slider.slideNow >= slider.slideCount-1) slider.slideNow = 0;
+	else slider.slideNow++;
+	updateSlide(slider);
 }
 
-function prevSlide() {
-	if (slideNow <= 0) slideNow = slideCount-1;
-	else slideNow--;
-	updateSlide();
+function prevSlide(slider) {
+	if (slider.slideNow <= 0) slider.slideNow = slider.slideCount-1;
+	else slider.slideNow--;
+	updateSlide(slider);
 }
 
-function updateSlide() {
-	let translateWidth = -$('#viewport').width() * slideNow;
-	$('#slidewrapper').css({
-		'transform': 'translate(' + translateWidth + 'px, 0)',
-		'-webkit-transform': 'translate(' + translateWidth + 'px, 0)',
-		'-ms-transform': 'translate(' + translateWidth + 'px, 0)',
-	});
+function updateSlide(slider) {
+	let translateWidth = -$(slider).width() * slider.slideNow;
+	$(slider).find('.slidewrapper').css({'transform': 'translateX('+translateWidth+'px)'});
 }

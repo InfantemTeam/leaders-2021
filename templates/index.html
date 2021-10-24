@@ -50,12 +50,13 @@
 		<span class="slider-dots_item" onclick="currentSlide(3)"></span>
 	</div>
 
-	{% for cat in categories %}
-		<div class="Title_home">Заголовок слайдера</div>
-		<div id="block-for-slider">
-			<div id="viewport">
-				<ul id="slidewrapper" style="width: calc(100% * {{ similar_books | length }})">
-					{% for group in cat %}
+	{% for cat, books in rubrics.items() %}
+		<div class="Title_home">{{ cat }}</div>
+		<div class="block-for-slider">
+			<div class="slider-viewport">
+				{% set books = g.builtins.tuple(g.groupby(5, books)) %}
+				<ul class="slidewrapper" style="width: calc(100% * {{ books | length }})">
+					{% for group in books %}
 						<li class="slide">
 							{% for book in group %}
 								<a class="book">
@@ -68,9 +69,9 @@
 					{% endfor %}
 				</ul>
 
-				<div id="prev-next-btns">
-					<div id="prev-btn"><span class="material-icons">arrow_back</span></div>
-					<div id="next-btn"><span class="material-icons">arrow_forward</span></div>
+				<div class="prev-next-btns">
+					<div class="prev-btn"><span class="material-icons">arrow_back</span></div>
+					<div class="next-btn"><span class="material-icons">arrow_forward</span></div>
 				</div>
 			</div>
 		</div>

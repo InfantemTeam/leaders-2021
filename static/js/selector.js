@@ -1,4 +1,5 @@
-$(document).ready(function(){
-	$(".selector").chosen()
-	closeOnBgClick: true;
+$(document).ready(function() {
+	$('.selector').chosen({
+		closeOnBgClick: true,
+	});
 });
