@@ -2,6 +2,15 @@
 
 from quart import *
 
+
+class Book:
+	title: str
+	author: str
+
+	def __init__(self, title, author):
+		self.title, self.author = title, author
+
+
 app = Quart(__name__)
 
 @app.route('/')
@@ -18,7 +27,7 @@ async def lk():
 
 @app.route('/book')
 async def book():
-	return await render_template('book.html')
+	return await render_template('book.html', book=Book('Mein Kampf', 'Hitler A.'))
 
 if (__name__ == '__main__'):
 	app.run('0.0.0.0', debug=True)
