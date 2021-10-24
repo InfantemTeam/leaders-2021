@@ -1,0 +1,74 @@
+{% macro book_card(book) %}
+	<a href="#" class="book">
+		<div class="book_name_image">{{ book.name }}</div>
+		<div class="book_author_image">{{ book.author }}</div>
+
+		<div class="book_name">{{ book.name }}</div>
+		<div class="book_author">{{ book.author }}</div>
+	</a>
+{% endmacro %}
+
+
+{% extends "base.html" %}
+
+{% block head %}
+	<link rel="stylesheet" href="/static/css/lk.css">
+	<link rel="stylesheet" href="/static/css/index.css">  <!-- FIXME: костыль -->
+
+	<script src="/static/js/hamburger.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="header">
+		<div class="logo"><img src="/static/img/logo.svg">Библиотеки Москвы</div>
+		<div class="border_menu"></div>
+		<div class="name">Меню</div>
+
+		<div class="wrapper">
+			<div class="menuToggle">
+				<div class="hamburger"></div>
+			</div>
+
+			<ul class="menu" id="menu2">
+				<div class="spacer"></div>
+				<li><a href="/">Главная</a></li>
+				<li><a href="https://www.mos.ru/knigi/search">Поиск</a></li>
+				<li><a href="/lk">Личный кабинет</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="User">
+		<div class="container">
+			<div class="User_photo"><img src="/static/img/slide.png" class="User_image" id="User_image"></div>
+			<div class="overlay">
+				<div class="photo_change"><img src="/static/img/camera.svg"></div>
+			</div>
+		</div>
+
+		<div class="User_info">
+			<div class="User_parametr"><b>Фамилия:</b>  Музафаров</div>
+			<div class="User_parametr"><b>Имя:</b>  Карим</div>
+			<div class="User_parametr"><b>Логин:</b>  ЛогинКреативный</div>
+			<div class="User_parametr"><b>Дата рождения:</b>  11.11.1111</div>
+		</div>
+
+		<a href="/profile/edit" class="change_mail">Редактировать профиль</a>
+	</div>
+
+	<div class="spacer"></div>
+
+	<div class="title_books">Рекомендации</div>
+	<div class="books_block">
+		{% for i in recommended_books %}
+			{{ book_card(i) }}
+		{% endfor %}
+	</div>
+
+	<div class="title_books">Прочитанные</div>
+	<div class="books_block">
+		{% for i in read_books %}
+			{{ book_card(i) }}
+		{% endfor %}
+	</div>
+{% endblock %}

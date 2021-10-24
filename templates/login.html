@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<link rel="stylesheet" href="/static/css/login.css">
+
+	<script src="/static/js/login.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="card">
+		<div class="entr_logo"><img src="/static/img/logo.png"></div>
+		<div class="entrance_title">Доступ к информационным ресурсам города Москвы</div>
+		<div class="entrance_subtitle">Вход на Официальный сайт Мэра Москвы</div>
+
+		<div class="entrance_form">
+			<form method="post" action="/login">
+				<input type="text" onkeyup="checkParams()" name="login" class="input_entrance" placeholder="Логин (телефон, email или СНИЛС)">
+				<input type="password" onkeyup="checkParams()" name="password" class="input_entrance" placeholder="Введите пароль">
+				<div class="entrance_button">
+					<input type="submit" name="submit" value="Войти" disabled>
+				</div>
+			</form>
+		</div>
+
+		<div class="registration_form">
+			<form method="post" action="/register">
+				<input type="text" onkeyup="checkParams()" name="name" class="input_entrance" placeholder="Фамилия">
+				<input type="text" onkeyup="checkParams()" name="surname" class="input_entrance" placeholder="Имя">
+				<input type="text" onkeyup="checkParams()" name="date" class="input_entrance" placeholder="Дата рождения" onfocus="(this.type='date')" onblur="(this.type='text')">
+				<input type="text" onkeyup="checkParams()" name="login" class="input_entrance" placeholder="Логин (телефон, email или СНИЛС)">
+				<input type="password" onkeyup="checkParams()" name="password" class="input_entrance" placeholder="Введите пароль">
+				<div class="entrance_button">
+					<input type="submit" name="submit" value="Регистрация" disabled>
+				</div>
+			</form>
+		</div>
+
+		<div class="or">или</div>
+		<div class="spacer"></div>
+		<a href="#popup" class="VK popup-link">Войти через Вконтакте<img src="/static/img/VK.svg"></a>
+		<div class="spacer"></div>
+		<a href="#popup" class="telegram popup-link">Войти через Telegram<img src="/static/img/Telegram.svg"></a>
+
+		<div id="popup2" class="mfp-hide">
+			<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="Test_testvotBot" data-size="large" data-userpic="false" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+			<script type="text/javascript">function onTelegramAuth(user) { alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')'); }</script>
+		</div>
+
+		<div id="popup" class="mfp-hide">
+			<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+			<script type="text/javascript">VK.init({apiId: 7980616});</script>
+
+			<div id="vk_auth" class="vk_auth"></div>
+			<script type="text/javascript">VK.Widgets.Auth('vk_auth', {'authUrl': '/oauth/vk'});</script>
+		</div>
+
+		<div class="spacer"></div>
+		<div class="entrance_form">
+			<div class="registration">Впервые на сайте? <a class="registration_a Ent_hide">Зарегестрироваться</a></div>
+		</div>
+		<div class="registration_form"><div class="registration">Уже были на нашем сайте? <a class="registration_a Reg_hide">Войти</a></div></div>
+	</div>
+
+	<div class="spacerReg">.</div>
+{% endblock %}
