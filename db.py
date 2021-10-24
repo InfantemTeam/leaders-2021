@@ -6,7 +6,7 @@ from .app import *
 db = SQLAlchemy(app)
 
 
-readings_table = db.Table('readings', db.Base.metadata,
+readings_table = db.Table('readings', db.metadata,
 	db.Column('user_id', db.ForeignKey('user.id')),
 	db.Column('book_id', db.ForeignKey('book.id')),
 )
