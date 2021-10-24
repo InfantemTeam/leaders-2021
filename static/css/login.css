@@ -138,7 +138,7 @@
 	margin-left: -32px;
 }
 
-.vk {
+#vk {
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 15px;
@@ -151,19 +151,19 @@
 	cursor: pointer;
 }
 
-.vk:active:hover {
+#vk:active:hover {
 	background-color: #0057FF;
 }
 
-.vk .logo {
+#vk .logo {
 	margin-left: 18px;
 }
 
-.vk .spinner {
+#vk .spinner {
 	margin-left: -42px;
 }
 
-.telegram {
+#telegram {
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 10px;
@@ -176,18 +176,26 @@
 	cursor: pointer;
 }
 
-.telegram:active:hover {
+#telegram:active:hover {
 	background-color: #1E80FF;
 }
 
-.telegram .logo {
+#telegram .logo {
 	position: absolute;
 	margin-top: -5px;
 	margin-left: 24px;
 }
 
-.telegram .spinner {
+#telegram .spinner {
 	margin-left: -49px;
+}
+
+#register_fields {
+	display: none;
+}
+
+#register_fields.active {
+	display: initial;
 }
 
 .registration {
