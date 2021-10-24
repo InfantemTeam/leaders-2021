@@ -5,6 +5,7 @@
 
 	<script src="/static/js/slider_books.js"></script>
 	<script src="/static/js/hamburger.js"></script>
+	<script src="/static/js/accordion.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -36,6 +37,10 @@
 		<button class="accordion">Библиотека</button>
 
 		<div class="panel">
+			<div class="searching_filter">
+				<input type="text" name="search" class="search_input_filter" placeholder="Поиск">
+		<div class="search_button_filter">Найти</div>
+			</div>
   			<div class="checkbox_filter">
 				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
 			</div>
@@ -150,5 +155,4 @@
 			</div>
 		</div>
 	</div>
-	<script src="/static/js/selector.js"></script>
 {% endblock %}

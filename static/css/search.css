@@ -147,6 +147,26 @@ input[type=number] {
     transition: max-height 0.3s ease-out;
 }
 
+.searching_filter{
+	width: 100%;
+	margin-top: -18px;
+}
+
+.search_input_filter{
+	width: 50%;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 100%;
+	border: 1px solid #1E90FF;
+	display: inline-block;
+}
+
+.search_button_filter{
+	color: #1E90FF;
+	padding: 20px;
+	display: inline-block;
+}
+
 
 .year_filter{
 	margin-top: -10px;
