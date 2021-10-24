@@ -16,7 +16,7 @@ function showSlides(n) {
 	let slides = document.querySelectorAll('.item'),
 	    dots = document.querySelectorAll('.slider-dots_item');
 
-	if (n < 0) slideIndex = slides.length;
+	if (n < 0) slideIndex = slides.length-1;
 	else if (n >= slides.length) slideIndex = 0;
 
 	for (let i = 0; i < slides.length; i++)
