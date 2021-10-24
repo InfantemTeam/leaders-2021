@@ -20,6 +20,10 @@ async def lk():
 async def book():
 	return await render_template('book.html')
 
+@app.route('/search')
+async def search():
+	return await render_template('search.html')
+
 if (__name__ == '__main__'):
 	app.run('0.0.0.0', debug=True)
 
