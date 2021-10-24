@@ -13,9 +13,6 @@
 {% endblock %}
 
 {% block content %}
-	<div class="header2">
-		<div class="header2_text">Люди читают</div>
-	</div>
 
 	<div class="slider">
 		<div class="item">
@@ -54,6 +51,7 @@
 	</div>
 
 	{% for cat in categories %}
+		<div class="Title_home">Заголовок слайдера</div>
 		<div id="block-for-slider">
 			<div id="viewport">
 				<ul id="slidewrapper" style="width: calc(100% * {{ similar_books | length }})">
