@@ -31,7 +31,7 @@
 	<div id="block-for-slider">
         <div id="viewport">
 		<ul id="slidewrapper" style="width: calc(100% * {{ similar_books | length }})">
-			{% for group in similar_books %}
+			{% for group in g.groupby(5, similar_books) %}
 				<li class="slide">
 					{% for book in group %}
 						<a class="book">
