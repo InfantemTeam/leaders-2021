@@ -28,25 +28,5 @@
 		</div>
 	</div>
 
-	<div id="block-for-slider">
-        <div id="viewport">
-		<ul id="slidewrapper" style="width: calc(100% * {{ similar_books | length }})">
-			{% for group in g.groupby(5, similar_books) %}
-				<li class="slide">
-					{% for book in group %}
-						<a class="book">
-							<div class="book_img"><img src="/static/img/book.svg"></div>
-							<div class="book_name">{{ book.title }}</div>
-							<div class="book_author">{{ book.author }}</div>
-						</a>
-					{% endfor %}
-				</li>
-			{% endfor %}
-		</ul>
-
-		<div id="prev-next-btns">
-			<div id="prev-btn"><span class="material-icons">arrow_back</span></div>
-			<div id="next-btn"><span class="material-icons">arrow_forward</span></div>
-		</div>
-	</div>
+	{{ book_slider(similar_books) }}
 {% endblock %}

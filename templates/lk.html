@@ -22,29 +22,22 @@
 			<input type="file" id="photo-input" />
 		</div>
 
-		<div class="User_info">
-			<div class="User_parametr"><b>Фамилия:</b> Музафаров</div>
-			<div class="User_parametr"><b>Имя:</b> Карим</div>
-			<div class="User_parametr"><b>E-mail:</b> ЛогинКреативный</div>
-			<div class="User_parametr"><b>Дата рождения:</b> 11.11.1111</div>
+		<div id="uinfo_display" class="User_info">
+			<div class="User_parametr"><b>Фамилия:</b> {{ g.user.surname }}</div>
+			<div class="User_parametr"><b>Имя:</b> {{ g.user.name }}</div>
+			<div class="User_parametr"><b>Email:</b> {{ g.user.login }}</div>
+			<div class="User_parametr"><b>Дата рождения:</b> {{ g.user.bdate }}</div>
 		</div>
 
-		<a class="change_mail">Редактировать профиль</a>
-
-
-		<div class="User_info">
-			<div class="User_parametr"><b>Фамилия:</b><input type="text" name="surname" class="input_login_LK"></div>
-			<div class="User_parametr"><b>Имя:</b><input type="text" name="name" class="input_login_LK"> </div>
-			<div class="User_parametr"><b>E-mail:</b><input type="E-mail" name="login" class="input_login_LK"></div>
-			<div class="User_parametr"><b>Дата рождения:</b> 11.11.1111</div>
+		<div id="uinfo_edit" class="User_info">
+			<div class="User_parametr"><b>Фамилия:</b><input type="text" name="surname" class="input_login_LK" value="{{ g.user.surname }}"></div>
+			<div class="User_parametr"><b>Имя:</b><input type="text" name="name" class="input_login_LK" value="{{ g.user.name }}"></div>
+			<div class="User_parametr"><b>Email:</b><input type="email" name="login" class="input_login_LK" value="{{ g.user.login }}"></div>
+			<div class="User_parametr"><b>Дата рождения:</b><input type="text" name="date" class="input_login_LK" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'" value="{{ g.user.bdate }}"></div>
 		</div>
 
-
-		<!--
-			<input type="text" onkeyup="checkParams()" id="name" class="input_login" placeholder="Фамилия" value="Музафаров">
-			<input type="text" onkeyup="checkParams()" id="surname" class="input_login" placeholder="Имя" value="Карим">
-			<input type="text" onkeyup="checkParams()" id="login" class="input_login" placeholder="Логин (телефон, email или СНИЛС)" value="ЛогинКреативный">
-		-->
+		<a id="edit_profile_button" class="edit_profile_button">Редактировать профиль</a>
+		<a id="save_profile_button" class="edit_profile_button">Сохранить профиль</a>
 	</div>
 
 	<div class="spacer"></div>

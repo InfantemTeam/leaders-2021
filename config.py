@@ -9,3 +9,5 @@ CATEGORIES = (
 	'Исторический любовный роман',
 	'Фэнтэзи',
 )
+
+VK_SECRET = "YVeVC2D5G4Hd9fx8Dwhn"

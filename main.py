@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-import csv, json, builtins, itertools
+import csv, json, hashlib, builtins, itertools
 from quart import *
+from db import *
 
 def groupby(n: int, l): return ((*(j for j in i if j is not None),) for i in itertools.zip_longest(*(iter(l),)*n))
 
@@ -75,27 +76,21 @@ async def register():
 
 @app.route('/oauth/vk', methods=('POST',))
 async def oauth_vk():
-	form = await request.form
-	try: h, sig = hashlib.md5((str().join(f"" for i in ('expire', 'mid', 'secret', 'sid')) + app.config['VK_SECRET']).encode()).hexdigest(), form['sig']
+	data = await request.get_json()
+	try: h, sig, u = hashlib.md5((str().join(f"{i}={data[i]}" for i in ('expire', 'mid', 'secret', 'sid')) + app.config['VK_SECRET']).encode()).hexdigest(), data['sig'], data['user']
 	except Exception as ex: return abort(400, ex)
 
-	async with aiohttp.ClientSession() as session:
-		async with session.get(f"https://api.vk.com/method/users.get?access_token={access_token}&v=5.131") as resp:
-			r = await resp.json()
-	if ('error' in r): return abort(403, r['error'])
-	vk_id = r['response'][0]['id']
+	if (h.strip() != sig.strip()): return abort(403)
 
-	if (vk_id != user_id): return abort(406)
+	vk_id = user['id']
 
 	user = User.query.filter_by(vk_id=vk_id).first()
 	if (not user):
-		user = User(vk_id=vk_id)
+		user = User(name=user['first_name'], surname=user['last_name'], vk_id=vk_id)
 		db.session.add(user)
 		db.session.commit()
 
 	login_user(AuthUser(user.id))
-
-	return get_user(user)
 
 @app.route('/lk')
 async def lk():

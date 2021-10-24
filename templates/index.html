@@ -17,25 +17,25 @@
 	<div class="slider">
 		<div class="item">
 			<img src="/static/img/slide.png" alt="Первый слайд">
-			<div class="slideTitle">Библиотеки мск</div>
+			<div class="slideTitle">Библиотеки Москвы</div>
 			<div class="slideText">Находите и бронируйте любимые книги прямо из дома.</div>
 		</div>
 
 		<div class="item">
 			<img src="/static/img/slide.png" alt="Второй слайд">
-			<div class="slideTitle">Библиотеки мск</div>
+			<div class="slideTitle">Библиотеки Москвы</div>
 			<div class="slideText">Заказывайте книги в любой библиотеке города по единому читательскому билету.</div>
 		</div>
 
 		<div class="item">
 			<img src="/static/img/slide.png" alt="Третий слайд">
-			<div class="slideTitle">Библиотеки мск</div>
+			<div class="slideTitle">Библиотеки Москвы</div>
 			<div class="slideText">Следите за заказом через кабинет читателя.</div>
 		</div>
 
 		<div class="item">
 			<img src="/static/img/slide.png" alt="Четвертый слайд">
-			<div class="slideTitle">Библиотеки мск</div>
+			<div class="slideTitle">Библиотеки Москвы</div>
 			<div class="slideText">Он создается автоматически, если у вас есть учётная запись на Mos.ru.</div>
 		</div>
 
@@ -52,28 +52,6 @@
 
 	{% for cat, books in rubrics.items() %}
 		<div class="Title_home">{{ cat }}</div>
-		<div class="block-for-slider">
-			<div class="slider-viewport">
-				{% set books = g.builtins.tuple(g.groupby(5, books)) %}
-				<ul class="slidewrapper" style="width: calc(100% * {{ books | length }})">
-					{% for group in books %}
-						<li class="slide">
-							{% for book in group %}
-								<a class="book">
-									<div class="book_img"><img src="/static/img/book.svg"></div>
-									<div class="book_name">{{ book.title }}</div>
-									<div class="book_author">{{ book.author }}</div>
-								</a>
-							{% endfor %}
-						</li>
-					{% endfor %}
-				</ul>
-
-				<div class="prev-next-btns">
-					<div class="prev-btn"><span class="material-icons">arrow_back</span></div>
-					<div class="next-btn"><span class="material-icons">arrow_forward</span></div>
-				</div>
-			</div>
-		</div>
+		{{ book_slider(books) }}
 	{% endfor %}
 {% endblock %}
