@@ -14,11 +14,12 @@
 	color: #fff;
 	margin-left: 10%;
 	font-size: 120%;
+	text-decoration: none;
 }
 
 .logo img {
 	position: absolute;
-	top: 0;
+	top: 10%;
 	left: 3%;
 }
 
@@ -28,6 +29,8 @@
 	right: 10%;
 	font-size: 120%;
 	z-index: 1;
+	top: 35%;
+	cursor: pointer;
 }
 
 .header2 {
@@ -35,7 +38,7 @@
 	background: #fff;
 	top: 65px;
 	z-index: 100;
-	height: 10%;
+	height: 60px;
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -360,14 +363,19 @@
 	text-decoration: none;
 }
 
-.menuToggle{
+.icon{
 	position: absolute;
 	right: 2%;
-	top: 40%;
+	top: 35%;
 	width: 2%;
 	height: 40%;
 	z-index: 1;
 	cursor: pointer;
+	background-color: transparent;
+}
+
+
+.menuToggle.active{
 	background-color: transparent;
 }
 
