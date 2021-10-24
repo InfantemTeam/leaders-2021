@@ -31,59 +31,23 @@
 		<div id="viewport">
 			<ul id="slidewrapper">
 				<li class="slide">
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
+					{% for _ in range(5+1) %}
+						<a class="book">
+							<div class="book_img"><img src="/static/img/book.svg"></div>
+							<div class="book_name">{{ book.title }}</div>
+							<div class="book_author">{{ book.author }}</div>
+						</a>
+					{% endfor %}
 				</li>
 
 				<li class="slide">
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
-					<a class="book">
-						<div class="book_img"><img src="/static/img/book.svg"></div>
-						<div class="book_name">{{ book.title }}</div>
-						<div class="book_author">{{ book.author }}</div>
-					</a>
+					{% for _ in range(5+1) %}
+						<a class="book">
+							<div class="book_img"><img src="/static/img/book.svg"></div>
+							<div class="book_name">{{ book.title }}</div>
+							<div class="book_author">{{ book.author }}</div>
+						</a>
+					{% endfor %}
 				</li>
 			</ul>
 
