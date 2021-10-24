@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: center;
 	margin-top: 90px;
+	margin-bottom: 100px;
 	width: 100%;
 	height: auto;
 }
@@ -18,4 +19,137 @@
 	color: #1E90FF;
 	padding: 20px;
 }
+
+.filter{
+	margin-left: 3%;
+	float: left;
+	width: 20%;
+}
+
+.checkbox_filter{
+	margin-bottom: 10px;
+}
+
+.checkbox_text{
+    font-size: 120%;
+}
+
+.checkbox:checked, 
+.checkbox:not(:checked) 
+{
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox:checked + label, 
+.checkbox:not(:checked) + label {
+    display: inline-block;
+    position: relative;
+    padding-left: 28px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.checkbox:checked + label:before, 
+.checkbox:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.checkbox:checked + label:before, 
+.checkbox:not(:checked) + label:before {
+    border-radius: 2px;
+}
+
+.checkbox:checked + label:after, 
+.checkbox:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.checkbox:checked + label:after, 
+.checkbox:not(:checked) + label:after {
+    left: 3px;
+    top: 4px;
+    width: 10px;
+    height: 5px;
+    border-radius: 1px;
+    border-left: 2px solid #1E90FF;
+    border-bottom: 2px solid #1E90FF;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.checkbox:not(:checked) + label:after {
+    opacity: 0;
+}
+
+.checkbox:checked + label:after {
+    opacity: 1;
+}
+
+.searching_book{
+	width: 70%;
+	margin-left: 25%;
+	margin-bottom: 100px;
+}
+
+.searching_book_img{
+	width: 20% ;
+	display: inline-block;
+}
+
+.searching_book_img img{
+	width: 100%;
+}
+
+.searching_book_name{
+	color: #333;
+	margin-top: -180px;
+	margin-left: 10px;
+	width: 150px;
+	max-height: 41px;
+	line-height: 20px;
+	overflow: hidden;
+}
+
+.searching_book_author{
+	color: #AEB4BA;
+	font-size: 80%;
+	margin-top: 20px;
+	margin-left: 10px;
+	width: 150px;
+	max-height: 41px;
+	line-height: 20px;
+	overflow: hidden;
+}
+
+.searching_book_info{
+	display: inline-block;
+}
+
+.searching_book_info_title{
+	font-size: 120%;
+	margin-bottom: 5%;
+}
+
+.searching_book_info_line{
+	color: #ccc;
+	margin-bottom: 3%;
+}
+
+
 
