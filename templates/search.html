@@ -2,9 +2,9 @@
 
 {% block head %}
 	<link rel="stylesheet" href="/static/css/search.css">
+
 	<script src="/static/js/slider_books.js"></script>
 	<script src="/static/js/hamburger.js"></script>
-	<script src="/static/js/selector.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -21,16 +21,81 @@
 		<h2>Фильтры</h2>
 		<h3>Найдено 110077 книг</h3>
 		<div class="checkbox_filter">
-			<input type="checkbox" id="stock" class="checkbox"> <label for="stock" class="checkbox_text">В наличи</label>
+			<input type="checkbox" id="stock" class="checkbox"> <label for="stock" class="checkbox_text">В наличии</label>
 		</div>
 		<div class="checkbox_filter">
 			<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
 		</div>
-		<select  data-placeholder="Библиотека..." multiple name="lib[]" class="selector">
-    		<option value="Чебурашка">Библиотека1</option>
-    		<option value="Чебурашка">Библиотека2</option>
-    		<option value="Чебурашка">Библиотека3</option>
-    	</select>
+
+		<h4>Год издания</h4>
+    	<div class="year_filter">
+    		от:<input type="number" min="0" max="2021" step="1" placeholder="0" />
+    		до:<input type="number" min="0" max="2021" step="1" placeholder="2021" />
+    	</div>
+
+		<button class="accordion">Библиотека</button>
+
+		<div class="panel">
+  			<div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Автор</button>
+		<div class="panel">
+			<div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Издательтсво</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Тип издания</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Тематика</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Серия</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Язык</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+
+		<button class="accordion">Возрастное ограничение</button>
+		<div class="panel">
+  			 <div class="checkbox_filter">
+				<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
+			</div>
+		</div>
+		</div>
+
+    	
 		
 	</div>
 
@@ -85,4 +150,5 @@
 			</div>
 		</div>
 	</div>
+	<script src="/static/js/selector.js"></script>
 {% endblock %}

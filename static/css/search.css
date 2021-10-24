@@ -1,3 +1,15 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .search{
 	display: flex;
 	justify-content: center;
@@ -64,7 +76,7 @@
 
 .checkbox:checked + label:before, 
 .checkbox:not(:checked) + label:before {
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .checkbox:checked + label:after, 
@@ -99,6 +111,53 @@
 
 .checkbox:checked + label:after {
     opacity: 1;
+}
+
+.accordion {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 120%;
+    transition: 0.5s;
+    margin-left: -5px;
+    width: 95%;
+}
+
+.accordion:after {
+    content: '∟';
+    color: #000;
+	font-size: 150%;
+    float: right;
+    margin-left: 5px;
+    transform: rotate(135deg);
+    transition: .5s;
+}
+
+.active:after {
+    transform: rotate(315deg);
+}
+
+.panel {
+	font-size: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+
+.year_filter{
+	margin-top: -10px;
+}
+
+.year_filter input{
+	width: 20%;
+	border: 1px solid #ccc;
+	font-size: 100%;
+	margin: 10px;
+	border-radius: 5px;
 }
 
 .searching_book{
