@@ -13,8 +13,8 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-	let slides = document.querySelector('.item'),
-	    dots = document.querySelector('.slider-dots_item');
+	let slides = document.querySelectorAll('.item'),
+	    dots = document.querySelectorAll('.slider-dots_item');
 
 	if (n < 0) slideIndex = slides.length;
 	else if (n >= slides.length) slideIndex = 0;
