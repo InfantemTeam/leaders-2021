@@ -18,6 +18,7 @@
 			<div class="book_page_image_name">{{ book.title }}</div>
 			<div class="book_page_image_autor">{{ book.author }}</div>
 		</div>
+
 		<div class="book_page_info">
 			<div class="book_page_title">{{ book.title }}</div>
 			<div class="book_page_descriotion">
@@ -29,9 +30,10 @@
 
 	<div id="block-for-slider">
         <div id="viewport">
-            <ul id="slidewrapper">
+		<ul id="slidewrapper" style="width: calc(100% * {{ similar_books | length }})">
+			{% for group in similar_books %}
 				<li class="slide">
-					{% for _ in range(5) %}
+					{% for book in group %}
 						<a class="book">
 							<div class="book_img"><img src="/static/img/book.svg"></div>
 							<div class="book_name">{{ book.title }}</div>
@@ -39,21 +41,12 @@
 						</a>
 					{% endfor %}
 				</li>
-				<li class="slide">
-					{% for _ in range(5) %}
-						<a class="book">
-							<div class="book_img"><img src="/static/img/book.svg"></div>
-							<div class="book_name">{{ book.title }}</div>
-							<div class="book_author">{{ book.author }}</div>
-						</a>
-					{% endfor %}
-				</li>
-			</ul>
+			{% endfor %}
+		</ul>
 
-			<div id="prev-next-btns">
-				<div id="prev-btn"><span class="material-icons">arrow_back</span></div>
-				<div id="next-btn"><span class="material-icons">arrow_forward</span></div>
-			</div>
+		<div id="prev-next-btns">
+			<div id="prev-btn"><span class="material-icons">arrow_back</span></div>
+			<div id="next-btn"><span class="material-icons">arrow_forward</span></div>
 		</div>
 	</div>
 {% endblock %}

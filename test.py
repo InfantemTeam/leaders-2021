@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+import itertools
 from quart import *
 
+def groupby(n, l): return ((*(j for j in i if j is not None),) for i in itertools.zip_longest(*(iter(l),)*n))
 
 class Book:
 	title: str
@@ -27,7 +29,10 @@ async def lk():
 
 @app.route('/book')
 async def book():
-	return await render_template('book.html', book=Book('Mein Kampf', 'Hitler A.'))
+	return await render_template('book.html',
+		book = Book('Mein Kampf', 'Hitler A.'),
+		similar_books = tuple(groupby(5, [Book('TODO', f"The Developer: Vol.{i}") for i in range(20)])),
+	)
 
 @app.route('/search')
 async def search():

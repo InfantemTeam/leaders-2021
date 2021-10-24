@@ -72,7 +72,6 @@
 
 #slidewrapper {
     position: relative;
-    width: calc(100% * 4);
     -webkit-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
