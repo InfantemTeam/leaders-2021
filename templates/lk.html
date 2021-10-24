@@ -1,15 +1,4 @@
-{% macro book_card(book) %}
-	<a href="#" class="book">
-		<div class="book_name_image">{{ book.name }}</div>
-		<div class="book_author_image">{{ book.author }}</div>
-
-		<div class="book_name">{{ book.name }}</div>
-		<div class="book_author">{{ book.author }}</div>
-	</a>
-{% endmacro %}
-
-
-{% extends "base.html" %}
+{% extends "main.html" %}
 
 {% block head %}
 	<link rel="stylesheet" href="/static/css/lk.css">
@@ -18,13 +7,20 @@
 	<script src="/static/js/hamburger.js"></script>
 {% endblock %}
 
+{% block title %}
+	Личный кабинет
+{% endblock %}
+
 {% block content %}
 	<div class="User">
 		<div class="container">
 			<div class="User_photo"><img src="/static/img/slide.png" class="User_image" id="User_image"></div>
-			<div class="overlay">
-				<div class="photo_change"><img src="/static/img/camera.svg"></div>
-			</div>
+			<label for="photo-input">
+				<div class="overlay">
+					<div class="photo_change"><img src="/static/img/camera.svg"></div>
+				</div>
+			</label>
+			<input type="file" id="photo-input" />
 		</div>
 
 		<div class="User_info">
@@ -34,7 +30,12 @@
 			<div class="User_parametr"><b>Дата рождения:</b>  11.11.1111</div>
 		</div>
 
-		<a href="/profile/edit" class="change_mail">Редактировать профиль</a>
+		<a class="change_mail">Редактировать профиль</a>
+		<!--
+			<input type="text" onkeyup="checkParams()" id="name" class="input_entrance" placeholder="Фамилия" value="Музафаров">
+			<input type="text" onkeyup="checkParams()" id="surname" class="input_entrance" placeholder="Имя" value="Карим">
+			<input type="text" onkeyup="checkParams()" id="login" class="input_entrance" placeholder="Логин (телефон, email или СНИЛС)" value="ЛогинКреативный">
+		-->
 	</div>
 
 	<div class="spacer"></div>

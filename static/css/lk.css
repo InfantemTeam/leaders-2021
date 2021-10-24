@@ -69,11 +69,15 @@
 
 .change_mail {
 	width: 10%;
-	font-size:  120%;
+	font-size: 120%;
 	padding: 10px;
 	color: #fff;
 	background-color: #1E90FF;
 	outline: none;
 	cursor: pointer;
 	text-decoration: none;
+}
+
+#photo-input {
+	display: none;
 }

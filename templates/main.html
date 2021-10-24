@@ -1,0 +1,40 @@
+{% macro book_card(book) %}
+	<a href="#" class="book">
+		<div class="book_name_image">{{ book.name }}</div>
+		<div class="book_author_image">{{ book.author }}</div>
+
+		<div class="book_name">{{ book.name }}</div>
+		<div class="book_author">{{ book.author }}</div>
+	</a>
+{% endmacro %}
+
+
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="header">
+		<a href="/" class="logo"><img src="/static/img/logo.svg">Библиотеки Москвы</a>
+		<div class="border_menu"></div>
+		<div class="menuToggle">
+			<div class="name ">Меню</div>
+		</div>
+
+		<div class="wrapper">
+			<div class="menuToggle icon">
+				<div class="hamburger"></div>
+			</div>
+
+
+			<ul class="menu">
+				<div class="spacer"></div>
+				<li><a href="/">Главная</a></li>
+				<li><a href="/search">Поиск</a></li>
+				<li><a href="/lk">Личный кабинет</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="content">{% block content %}{% endblock %}</div>
+
+	<!--<footer>&copy; InfantemTeam<br>Лидеры цифровой трансформации<br>2021</footer>-->
+{% endblock %}
