@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block head %}
+	<link rel="stylesheet" href="/static/css/book.css">
+
+	<script src="/static/js/slider_books.js"></script>
+	<script src="/static/js/hamburger.js"></script>
+{% endblock %}
+
+{% block title %}
+	Страница книги
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="book_page_image">
+	<img src="static/img/book.svg">
+	<div class="book_page_image_name">Война и мир</div>
+	<div class="book_page_image_autor">Толстой Лев Николаевич</div>
+</div>
+
+<div class="book_page_title">Война и Мир</div>
+<div class="book_page_descriotion">
+	<div class="book_page_descriotion_line"><b>Автор:</b>Толстой Лев Николаевич</div>
+</div>
+
+
+{% endblock %}

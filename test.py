@@ -16,6 +16,10 @@ async def login():
 async def lk():
 	return await render_template('lk.html')
 
+@app.route('/book')
+async def book():
+	return await render_template('book.html')
+
 @app.route('/profile/edit')
 async def profile_edit():
 	return await render_template('profile_edit.html')
