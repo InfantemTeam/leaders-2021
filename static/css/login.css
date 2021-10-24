@@ -67,7 +67,7 @@
 	margin-top: -4%;
 }
 
-.forgot_password:  hover {
+.forgot_password: hover {
 	color: #ff0000;
 }
 
@@ -79,7 +79,7 @@
 
 .entrance_button input {
 	width: 100%;
-	font-size:  120%;
+	font-size: 120%;
 	padding: 10px;
 	color: #fff;
 	background-color: #1E90FF;
