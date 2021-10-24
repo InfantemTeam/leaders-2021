@@ -23,7 +23,7 @@ function showSlides(n) {
 		slides[i].style.display = 'none';
 
 	for (let i = 0; i < dots.length; i++)
-		dots[i].className = dots[i].classList.remove('active');
+		dots[i].classList.remove('active');
 
 	slides[slideIndex].style.display = 'block';
 	dots[slideIndex].classList.add('active');
