@@ -13,6 +13,14 @@ body {
 	box-sizing: border-box;
 }
 
+.material-icons {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
 .spacer {
 	margin-top: 5%;
 }
