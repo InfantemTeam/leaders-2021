@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import csv, json, hashlib, builtins, itertools
-from quart import *
-from db import *
+from . import *
+from .db import *
+
 
 def groupby(n: int, l): return ((*(j for j in i if j is not None),) for i in itertools.zip_longest(*(iter(l),)*n))
 
@@ -28,6 +29,7 @@ class Book:
 
 app = Quart(__name__)
 app.config.from_object('config')
+am = AuthManager(app)
 
 @app.before_request
 async def before_request():
@@ -118,8 +120,6 @@ def before_first_request():
 	rubrics = app.config['RUBRICS'] = {k: tuple(itertools.islice((Book(title, author, b) for i in v if (b := books.get(int(i))) and (title := b.get('title')) and (author := b.get('aut'))), 20)) for k, v in json.load(open('data/rubrics.json')).items() if k in app.config['CATEGORIES']}
 	print("Data loaded.")
 
-if (__name__ == '__main__'):
-	app.run('0.0.0.0', debug=False, autoreload=True)
 
 # by InfantemTeam, 2021
 # infantemteam@sdore.me

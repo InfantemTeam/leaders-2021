@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from quart import current_app as app
 from flask_sqlalchemy import SQLAlchemy
+from .app import *
 
 db = SQLAlchemy(app)
 
