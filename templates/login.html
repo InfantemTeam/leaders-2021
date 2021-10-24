@@ -3,6 +3,9 @@
 {% block head %}
 	<link rel="stylesheet" href="/static/css/login.css">
 
+	<script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+	<script async src="https://telegram.org/js/telegram-widget.js?15"></script>
+
 	<script src="/static/js/login.js"></script>
 {% endblock %}
 
@@ -21,9 +24,11 @@
 				<input type="text" name="login" class="input_login" placeholder="Логин (телефон, email или СНИЛС)">
 				<input type="password" name="password" class="input_login" placeholder="Пароль">
 
-				<input type="text" name="name" class="input_login" placeholder="Имя">
-				<input type="text" name="surname" class="input_login" placeholder="Фамилия">
-				<input type="text" name="date" class="input_login" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'">
+				<div id="register_fields">
+					<input type="text" name="name" class="input_login" placeholder="Имя">
+					<input type="text" name="surname" class="input_login" placeholder="Фамилия">
+					<input type="text" name="date" class="input_login" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'">
+				</div>
 
 				<div class="login_button popup-link">
 					<input type="submit" name="submit" value="Войти">
@@ -34,35 +39,23 @@
 
 		<div class="or">или</div>
 
-		<button type="submit" class="vk popup-link" href="#popup">
+		<button type="submit" id="vk" class="popup-link"> <!--href="#popup"-->
 			<img src="/static/img/spinner.gif" class="spinner">
 			Войти через ВКонтакте
 			<img src="/static/img/vk.svg" class="logo">
 		</button>
 
-		<button type="submit" class="telegram popup-link" href="#popup2">
+		<button type="submit" id="telegram" class="popup-link">
 			<img src="/static/img/spinner.gif" class="spinner">
 			Войти через Telegram
 			<img src="/static/img/telegram.svg" class="logo">
 		</button>
 
-		<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="leaders_oauth_bot" data-size="large" data-userpic="false" data-auth-url="https://leaders.sdore.me/oauth/telegram"></script>
+		<!--<div id="popup" class="mfp-hide">
+			<iframe src="https://oauth.vk.com/authorize?client_id=7980616&display=popup&redirect_uri=https://leaders.sdore.me/oauth/vk&response_type=code&v=5.131"></iframe>
+		</div>-->
 
-		<div id="popup2" class="mfp-hide">
-			<script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="Test_testvotBot" data-size="large" data-userpic="false" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
-			<script type="text/javascript">function onTelegramAuth(user) { alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')'); }</script>
-		</div>
-
-		<iframe id="popup" class="mfp-hide">
-		</iframe>
-
-		<div class="spacer"></div>
-
-		<div class="login_form">
-			<div class="registration">Впервые на сайте? <a class="registration_a Ent_hide">Зарегистрироваться</a></div>
-		</div>
-		<div class="registration_form"><div class="registration">Уже были на нашем сайте? <a class="registration_a Reg_hide">Войти</a></div></div>
+		<div class="login_form"><div class="registration">Впервые на сайте? <a id="show_reg">Зарегистрироваться</a></div></div>
+		<div class="registration_form"><div class="registration">Уже были на нашем сайте? <a id="hide_reg">Войти</a></div></div>
 	</div>
-
-	<div class="spacerReg">.</div>
 {% endblock %}
