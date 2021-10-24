@@ -134,8 +134,13 @@
 .popup-link .spinner {
 	position: absolute;
 	width: 32px;
-	margin-top: -5px;
-	margin-left: -32px;
+}
+
+.position_spinner{
+	position: absolute;
+	top: 360px;
+	margin-left: -68.7%;
+
 }
 
 #vk {

@@ -139,6 +139,7 @@
 	list-style: none;
 	display: inline;
 	float: left;
+	height: 250px;
 }
 
 .slide-img {
@@ -199,11 +200,13 @@
 .book_name {
 	position: absolute;
 	left: 10%;
-	bottom: 15%;
+	bottom: 20%;
 	font-size: 80%;
-	height: 25px;
+	max-height: 24px;
 	line-height: 12px;
+	overflow: hidden;
 	color: #333;
+	text-align: left;
 }
 
 .book_author {
@@ -211,5 +214,8 @@
 	left: 10%;
 	bottom: 10%;
 	font-size: 60%;
+	max-height: 25px;
+	line-height: 12px;
 	color: #AEB4BA;
+	text-align: left;
 }
