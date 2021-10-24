@@ -198,3 +198,8 @@ footer {
 	height: auto;
 	margin-left: 30%;
 }
+
+.book_img img{
+	width: 120px;
+	height: 160px;
+}

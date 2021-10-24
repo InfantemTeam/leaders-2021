@@ -184,6 +184,7 @@ input[type=number] {
 	width: 70%;
 	margin-left: 25%;
 	margin-bottom: 100px;
+
 }
 
 .searching_book_img{
@@ -198,7 +199,7 @@ input[type=number] {
 .searching_book_name{
 	color: #333;
 	margin-top: -180px;
-	margin-left: 10px;
+	margin-left: 30px;
 	width: 150px;
 	max-height: 41px;
 	line-height: 20px;
@@ -209,7 +210,7 @@ input[type=number] {
 	color: #AEB4BA;
 	font-size: 80%;
 	margin-top: 20px;
-	margin-left: 10px;
+	margin-left: 30px;
 	width: 150px;
 	max-height: 41px;
 	line-height: 20px;
@@ -223,11 +224,17 @@ input[type=number] {
 .searching_book_info_title{
 	font-size: 120%;
 	margin-bottom: 5%;
+	color: #000;
 }
 
 .searching_book_info_line{
 	color: #ccc;
 	margin-bottom: 3%;
+}
+
+.searching_book_img img{
+	width: 180px;
+	height: 220px;
 }
 
 
