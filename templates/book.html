@@ -8,23 +8,18 @@
 {% endblock %}
 
 {% block title %}
-	Страница книги
+	{{ book.title }}
 {% endblock %}
 
 {% block content %}
+	<div class="book_page_image">
+		<img src="static/img/book.svg">
+		<div class="book_page_image_name">Война и мир</div>
+		<div class="book_page_image_autor">Толстой Лев Николаевич</div>
+	</div>
 
-
-
-<div class="book_page_image">
-	<img src="static/img/book.svg">
-	<div class="book_page_image_name">Война и мир</div>
-	<div class="book_page_image_autor">Толстой Лев Николаевич</div>
-</div>
-
-<div class="book_page_title">Война и Мир</div>
-<div class="book_page_descriotion">
-	<div class="book_page_descriotion_line"><b>Автор:</b>Толстой Лев Николаевич</div>
-</div>
-
-
+	<div class="book_page_title">Война и Мир</div>
+	<div class="book_page_descriotion">
+		<div class="book_page_descriotion_line"><b>Автор:</b>Толстой Лев Николаевич</div>
+	</div>
 {% endblock %}
