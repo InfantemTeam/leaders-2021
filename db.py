@@ -15,6 +15,8 @@ class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	email = db.Column(db.String(255), unique=True)
 	password = db.Column(db.String(255))
+	name = db.Column(db.String(255))
+	surname = db.Column(db.String(255))
 	vk_id = db.Column(db.Integer, unique=True)
 	telegram_id = db.Column(db.Integer, unique=True)
 	read_books = db.relationship('Book', secondary=readings_table)

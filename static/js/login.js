@@ -22,11 +22,14 @@ $(document).ready(function() {
 		let form = this.parent('form');
 
 		$.ajax({
-			url: form.action,
-			type: 'POST',
+			url: form.attr('action'),
+			method: 'POST',
 			data: form.serialize(),
 			success: function() {
 				window.location = '/';
+			},
+			complete: function(xhr, msg) {
+				if (xhr.status != 200) alert(msg);
 			}
 		});
 	});
@@ -37,12 +40,16 @@ $(document).ready(function() {
 		VK.Auth.login(function(data) {
 			$.ajax({
 				url: '/oauth/vk',
-				type: 'POST',
+				method: 'POST',
 				data: JSON.stringify(data),
+				contentType: 'application/json',
 				success: function() {
 					window.location = '/';
+				},
+				complete: function(xhr, msg) {
+					if (xhr.status != 200) alert(msg);
 				}
-			})
+			});
 		});
 	});
 
@@ -53,12 +60,16 @@ $(document).ready(function() {
 		}, function(data) {
 			$.ajax({
 				url: '/oauth/telegram',
-				type: 'POST',
+				method: 'POST',
 				data: JSON.stringify(data),
+				contentType: 'application/json',
 				success: function() {
 					window.location = '/';
+				},
+				complete: function(xhr, msg) {
+					if (xhr.status != 200) alert(msg);
 				}
-			})
+			});
 		});
 	});
 })
