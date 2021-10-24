@@ -38,7 +38,7 @@ $(document).ready(function() {
 			$.ajax({
 				url: '/oauth/vk',
 				type: 'POST',
-				data: data,
+				data: JSON.stringify(data),
 				success: function() {
 					window.location = '/';
 				}
@@ -54,7 +54,7 @@ $(document).ready(function() {
 			$.ajax({
 				url: '/oauth/telegram',
 				type: 'POST',
-				data: data,
+				data: JSON.stringify(data),
 				success: function() {
 					window.location = '/';
 				}
