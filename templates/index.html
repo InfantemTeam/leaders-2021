@@ -1,26 +1,27 @@
 {% extends "base.html" %}
 
 {% block head %}
-	<link rel="stylesheet" href="static/css/books.css">
+	<link rel="stylesheet" href="/static/css/index.css">
 
-	<script src="static/js/window.js"></script>
-	<script src="static/js/Entrance.js"></script>
-	<script src="static/js/slider.js"></script>
-	<script src="static/js/slider_books.js"></script>
-	<script src="static/js/slider_books2.js"></script>
-	<script src="static/js/Hamburger.js"></script>
+	<script src="/static/js/window.js"></script>
+	<script src="/static/js/Entrance.js"></script>
+	<script src="/static/js/slider.js"></script>
+	<script src="/static/js/slider_books.js"></script>
+	<script src="/static/js/slider_books2.js"></script>
+	<script src="/static/js/Hamburger.js"></script>
 {% endblock %}
 
 {% block title %}
+	Главная
 {% endblock %}
 
 {% block content %}
 	<div class="header">
-		<div class="logo"><img src="Images/BookLogo.svg">Библиотеки Москвы</div>
+		<div class="logo"><img src="/static/img/BookLogo.svg">Библиотеки Москвы</div>
 		<div class="border_menu"></div>
 		<div class="name">Меню</div>
 		<div class="wrapper">
-			<div class="menuToggle icon">
+			<div class="menuToggle">
 				<div class="hamburger"></div>
 			</div>
 
@@ -39,31 +40,31 @@
 
 	<div class="slider">
 		<div class="item">
-			<img src="Images/slide.png" alt="Первый слайд">
+			<img src="/static/img/slide.png" alt="Первый слайд">
 			<div class="slideTitle">Библиотеки мск</div>
 			<div class="slideText">Находите и бронируйте любимые книги прямо из дома.</div>
 		</div>
 
 		<div class="item">
-			<img src="Images/slide.png" alt="Второй слайд">
+			<img src="/static/img/slide.png" alt="Второй слайд">
 			<div class="slideTitle">Библиотеки мск</div>
 			<div class="slideText">Заказывайте книги в любой библиотеке города по единому читательскому билету.</div>
 		</div>
 
 		<div class="item">
-			<img src="Images/slide.png" alt="Третий слайд">
+			<img src="/static/img/slide.png" alt="Третий слайд">
 			<div class="slideTitle">Библиотеки мск</div>
 			<div class="slideText">Следите за заказом через кабинет читателя.</div>
 		</div>
 
 		<div class="item">
-			<img src="Images/slide.png" alt="Четвертый слайд">
+			<img src="/static/img/slide.png" alt="Четвертый слайд">
 			<div class="slideTitle">Библиотеки мск</div>
 			<div class="slideText">Он создается автоматически, если у вас есть учётная запись на Mos.ru.</div>
 		</div>
 
-		<a class="prev" onclick="minusSlide()"><img class="arrov" src="Images/left-arrov.png"></a>
-		<a class="next" onclick="plusSlide()"><img class="arrov" src="Images/right_arrov.png"></a>
+		<a class="prev" onclick="minusSlide()"><img class="arrov" src="/static/img/left-arrov.png"></a>
+		<a class="next" onclick="plusSlide()"><img class="arrov" src="/static/img/right_arrov.png"></a>
 	</div>
 
 	<div class="slider-dots">
@@ -78,27 +79,27 @@
 			<ul id="slidewrapper">
 				<li class="slide">
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
@@ -106,27 +107,27 @@
 
 				<li class="slide">
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>
 					<a href="#" class="book">
-						<div class="book_img"><img src="Images/book.svg"></div>
+						<div class="book_img"><img src="/static/img/book.svg"></div>
 						<div class="book_name">Война и мир</div>
 						<div class="book_author">Л.Н.Толстой</div>
 					</a>

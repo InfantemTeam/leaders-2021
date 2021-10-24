@@ -10,21 +10,21 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-		<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-		<link rel="stylesheet" href="static/css/common.css">
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-		<script src="static/magnific-popup/magnific-popup.js"></script>
+		<link rel="stylesheet" href="/static/magnific-popup/magnific-popup.css">
+		<script src="/static/magnific-popup/magnific-popup.js"></script>
 
-		{% block head %}{% endblock %}
+		<link rel="stylesheet" href="/static/css/common.css">
 
-		<title>{% block title %}{% endblock %}</title>
+		{%- block head %}{% endblock -%}
+
+		<title>{% block title %}{% endblock %} &mdash; Библиотеки Москвы</title>
 	</head>
 
 	<body>
-		{% block content %}{% endblock %}
+		<div id="content">{% block content %}{% endblock %}</div>
 
-		<footer>InfantemTeam<br>Лидеры цифровой трансформации<br>2021</footer>
+		<!--<footer>&copy; InfantemTeam<br>Лидеры цифровой трансформации<br>2021</footer>-->
 	</body>
 </html>

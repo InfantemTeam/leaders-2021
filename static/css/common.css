@@ -44,19 +44,14 @@ input::-webkit-inner-spin-button {
 	color: #fff;
 }
 
-.entrance_window {
+#footer {
+	text-align: center;
+	width: 100%;
+	background-color: #EBEFF3;
+	height: 20px;
 	padding-top: 20px;
-	position: relative;
-	top: 100px;
-	margin-bottom: 100px;
-	width: 37%;
-	margin-left: 31%;
-	height: 600px;
-	box-shadow: 0 0 20px #DCDCDC;
-}
-
-.entrance_window.active {
-	height: 800px;
+	padding-bottom: 50px;
+	margin-top: 50px;
 }
 
 .entr_logo {

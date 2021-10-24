@@ -1,0 +1,14 @@
+#profile-edit {
+	padding-top: 20px;
+	position: relative;
+	top: 100px;
+	margin-bottom: 100px;
+	width: 37%;
+	margin-left: 31%;
+	height: 600px;
+	box-shadow: 0 0 20px #DCDCDC;
+}
+
+#profile-edit.active {
+	height: 800px;
+}
