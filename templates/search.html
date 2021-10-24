@@ -2,9 +2,9 @@
 
 {% block head %}
 	<link rel="stylesheet" href="/static/css/search.css">
-
 	<script src="/static/js/slider_books.js"></script>
 	<script src="/static/js/hamburger.js"></script>
+	<script src="/static/js/selector.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -26,8 +26,7 @@
 		<div class="checkbox_filter">
 			<input type="checkbox" id="booking" class="checkbox"> <label for="booking" class="checkbox_text">Онлайн-бронирование</label>
 		</div>
-		<select size="3" multiple name="lib[]" class="selector">
-    		<option disabled>Библиотека</option>
+		<select  data-placeholder="Библиотека..." multiple name="lib[]" class="selector">
     		<option value="Чебурашка">Библиотека1</option>
     		<option value="Чебурашка">Библиотека2</option>
     		<option value="Чебурашка">Библиотека3</option>

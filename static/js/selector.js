@@ -1,5 +1,3 @@
 $(document).ready(function() {
-	$('.selector').chosen({
-		closeOnBgClick: true,
-	});
+	$(".selector").chosen();
 });
