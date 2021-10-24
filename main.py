@@ -116,9 +116,9 @@ async def edit_profile(user):
 	try: name, surname, email, bdate = form['name'], form['surname'], form['email'], form['bdate']
 	except Exception as ex: return abort(400, ex)
 
-	profile.name, profile.surname, profile.email, profile.bdate = name, surname, email, bdate
+	user.name, user.surname, user.email, user.bdate = name, surname, email, bdate
 
-	db.session.add(profile)
+	db.session.add(user)
 	db.session.commit()
 
 	return 'OK'
