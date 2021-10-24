@@ -182,10 +182,6 @@ footer {
 	box-shadow: 0 0 20px #DCDCDC;
 }
 
-.card.active {
-	height: 860px;
-}
-
 .title_books {
 	padding-top: 5%;
 	margin-left: 30%;
