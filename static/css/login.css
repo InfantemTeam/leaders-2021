@@ -4,18 +4,18 @@
 	color: #fff;
 }
 
-.entr_logo {
+.login_logo {
 	top: 70px;
 	left: 10%;
 	width: 10%;
 	position: absolute;
 }
 
-.entr_logo img {
+.login_logo img {
 	width: 100%;
 }
 
-.entrance_title {
+.login_title {
 	font-size: 170%;
 	width: 70%;
 	margin-top: 7%;
@@ -23,7 +23,7 @@
 	font-weight: bolder;
 }
 
-.entrance_subtitle {
+.login_subtitle {
 	font-size: 120%;
 	text-align: center;
 	width: 60%;
@@ -39,15 +39,15 @@
 	display: block;
 }
 
-.entrance_form {
+.login_form {
 	display: block;
 }
 
-.entrance_form.active {
+.login_form.active {
 	display: none;
 }
 
-.input_entrance {
+.input_login {
 	width: 76%;
 	font-size: 90%;
 	margin-left: 10%;
@@ -56,7 +56,7 @@
 	border: 1px solid #C0C0C0;
 }
 
-.input_entrance:hover {
+.input_login:hover {
 	border: 1px solid #1E90FF;
 }
 
@@ -67,17 +67,17 @@
 	margin-top: -4%;
 }
 
-.forgot_password: hover {
+.forgot_password:hover {
 	color: #ff0000;
 }
 
-.entrance_button {
+.login_button {
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 5%;
 }
 
-.entrance_button input {
+.login_button input {
 	width: 100%;
 	font-size: 120%;
 	padding: 10px;
@@ -88,7 +88,7 @@
 	cursor: pointer;
 }
 
-.entrance_button input:active:hover {
+.login_button input:active:hover {
 	background-color: #1E80FF;
 }
 
@@ -126,27 +126,41 @@
 
 }
 
-.VK {
+.popup-link .logo {
+	position: absolute;
+	margin-top: -5px;
+}
+
+.popup-link .spinner {
+	position: absolute;
+	width: 32px;
+	margin-top: -5px;
+	margin-left: -32px;
+}
+
+.vk {
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 15px;
 	padding: 10px;
 	font-size: 120%;
-	background-color: #0077FF;
+	background-color: #2787f5;
 	color: #fff;
 	border: none;
 	outline: none;
 	cursor: pointer;
 }
 
-.VK:active:hover {
+.vk:active:hover {
 	background-color: #0057FF;
 }
 
-.VK img {
-	position: absolute;
-	margin-top: -5px;
-	margin-left: 20px;
+.vk .logo {
+	margin-left: 18px;
+}
+
+.vk .spinner {
+	margin-left: -42px;
 }
 
 .telegram {
@@ -155,7 +169,7 @@
 	margin-top: 10px;
 	padding: 10px;
 	font-size: 120%;
-	background-color: #1E90FF;
+	background-color: #0088cc;
 	color: #fff;
 	border: none;
 	outline: none;
@@ -166,16 +180,14 @@
 	background-color: #1E80FF;
 }
 
-
-.telegram img {
+.telegram .logo {
 	position: absolute;
 	margin-top: -5px;
-	margin-left: 30px;
+	margin-left: 24px;
 }
 
-.vk_auth {
-	position: fixed;
-	left: 42%;
+.telegram .spinner {
+	margin-left: -49px;
 }
 
 .registration {

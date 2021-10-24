@@ -178,12 +178,12 @@ footer {
 	margin-bottom: 100px;
 	width: 37%;
 	margin-left: 31%;
-	height: 600px;
+	height: 640px;
 	box-shadow: 0 0 20px #DCDCDC;
 }
 
 .card.active {
-	height: 800px;
+	height: 860px;
 }
 
 .title_books {
