@@ -13,6 +13,10 @@ body {
 	box-sizing: border-box;
 }
 
+.hidden {
+	display: none;
+}
+
 .material-icons {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -180,10 +184,6 @@ footer {
 	margin-left: 31%;
 	height: 640px;
 	box-shadow: 0 0 20px #DCDCDC;
-}
-
-.card.active {
-	height: 860px;
 }
 
 .title_books {

@@ -1,7 +1,5 @@
-.spacerReg {
-	padding-top: 100px;
-	font-size: .1px;
-	color: #fff;
+.card.active {
+	height: 860px;
 }
 
 .login_logo {
@@ -29,22 +27,6 @@
 	width: 60%;
 	margin-left: 20%;
 	margin-top: 5%;
-}
-
-.registration_form {
-	display: none;
-}
-
-.registration_form.active {
-	display: block;
-}
-
-.login_form {
-	display: block;
-}
-
-.login_form.active {
-	display: none;
 }
 
 .input_login {
@@ -195,19 +177,13 @@
 	margin-left: -49px;
 }
 
-#register_fields {
-	display: none;
-}
-
-#register_fields.active {
-	display: initial;
-}
-
-.registration {
+.link {
+	margin-top: 16px;
+	padding-bottom: 16px;
 	text-align: center;
 }
 
-.registration a {
+.link a {
 	text-decoration: none;
 	color: #50A0E4;
 	cursor: pointer;

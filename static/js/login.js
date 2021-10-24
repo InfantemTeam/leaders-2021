@@ -1,41 +1,64 @@
 $(document).ready(function() {
-	/*$('#vk').magnificPopup({
-		closeOnBgClick: true,
-	});*/
-
-	$('.show_reg').click(function() {
-		$('.registration_form').addClass('active');
-		$('.login_form').addClass('active');
+	$('#show_reg').click(function() {
+		$('#login_form').addClass('hidden');
+		$('#register_form').removeClass('hidden');
+		$('#register_link').addClass('hidden');
+		$('#login_link').removeClass('hidden');
 		$('.card').addClass('active');
-		$('.menu').slideToggle(300);
 	});
 
-	$('.hide_reg').click(function() {
-		$('.registration_form').removeClass('active');
-		$('.login_form').removeClass('active');
+	$('#hide_reg').click(function() {
+		$('#register_form').addClass('hidden');
+		$('#login_form').removeClass('hidden');
+		$('#login_link').addClass('hidden');
+		$('#register_link').removeClass('hidden');
 		$('.card').removeClass('active');
-		$('.menu').slideToggle(300);
+	});
+
+	$('#register_form').addClass('hidden');
+	$('#login_link').addClass('hidden');
+
+	$('.submit').click(function() {
+		let form = this.parent('form');
+
+		$.ajax({
+			url: form.action,
+			type: 'POST',
+			data: form.serialize(),
+			success: function() {
+				window.location = '/';
+			}
+		});
 	});
 
 	VK.init({apiId: 7980616});
 
 	$('#vk').click(function() {
 		VK.Auth.login(function(data) {
-			console.log(data);
+			$.ajax({
+				url: '/oauth/vk',
+				type: 'POST',
+				data: JSON.stringify(data),
+				success: function() {
+					window.location = '/';
+				}
+			})
 		});
 	});
 
 	$('#telegram').click(function() {
 		window.Telegram.Login.auth({
 			bot_id: 2051141677,
-			request_access: true,
+			request_access: false,
 		}, function(data) {
-			if (!data) {
-				// authorization failed
-			}
-
-			// Here you would want to validate data like described there https://core.telegram.org/widgets/login#checking-authorization
-			console.log(data);
+			$.ajax({
+				url: '/oauth/telegram',
+				type: 'POST',
+				data: JSON.stringify(data),
+				success: function() {
+					window.location = '/';
+				}
+			})
 		});
 	});
 })
