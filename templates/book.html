@@ -31,7 +31,7 @@
         <div id="viewport">
             <ul id="slidewrapper">
 				<li class="slide">
-					{% for _ in range(5+1) %}
+					{% for _ in range(5) %}
 						<a class="book">
 							<div class="book_img"><img src="/static/img/book.svg"></div>
 							<div class="book_name">{{ book.title }}</div>
@@ -40,7 +40,7 @@
 					{% endfor %}
 				</li>
 				<li class="slide">
-					{% for _ in range(5+1) %}
+					{% for _ in range(5) %}
 						<a class="book">
 							<div class="book_img"><img src="/static/img/book.svg"></div>
 							<div class="book_name">{{ book.title }}</div>
@@ -54,12 +54,6 @@
 				<div id="prev-btn"><span class="material-icons">arrow_back</span></div>
 				<div id="next-btn"><span class="material-icons">arrow_forward</span></div>
 			</div>
-			<ul id="nav-btns">
-                <li class="slide-nav-btn"></li>
-                <li class="slide-nav-btn"></li>
-                <li class="slide-nav-btn"></li>
-                <li class="slide-nav-btn"></li>
-            </ul>
 		</div>
 	</div>
 {% endblock %}

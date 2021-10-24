@@ -15,12 +15,10 @@ $(document).ready(function() {
 
 	$('#next-btn').click(function() {
 		nextSlide();
-		console.log(slideNow);
 	});
 
 	$('#prev-btn').click(function() {
 		prevSlide();
-		console.log(slideNow);
 	});
 
 	$('.slide-nav-btn').click(function() {
