@@ -2,6 +2,13 @@
 
 by InfantemTeam <infantemteam@sdore.me>.
 
+
+## Тестовый инстанс
+> ### https://leaders.sdore.me
+
+(точно работает авторизиция через VK).
+
+
 ## Запуск
 Способ запуска стандартный для Quart.
 * **Dev (`dev.sh`):**
