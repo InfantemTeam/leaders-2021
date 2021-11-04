@@ -221,8 +221,6 @@
 }
 
 .link {
-	margin-top: 16px;
-	padding-bottom: 16px;
 	text-align: center;
 }
 
@@ -230,4 +228,9 @@
 	text-decoration: none;
 	color: #50A0E4;
 	cursor: pointer;
+}
+
+#register_link{
+	padding-bottom: 16px;
+	margin-top: 16px;
 }
