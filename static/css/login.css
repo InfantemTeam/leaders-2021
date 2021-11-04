@@ -74,7 +74,7 @@
 	background-color: #1E80FF;
 }
 
-.login_button input:before {
+.submit:before {
 	content:'';
 	position: absolute;
 	top: 0;
@@ -85,7 +85,7 @@
 	transition: all 2s ease;
 }
 
-.login_button input:hover:before {
+.submit:hover:before {
 	width: 100%;
 }
 
@@ -174,7 +174,7 @@
 	width: 0;
 	height: 7%;
 	background: rgba(255,255,255,0.3);
-	transition: all 2s ease;
+	transition: all 1s ease;
 }
 
 #vk:hover:before {
@@ -216,7 +216,7 @@
 	width: 0;
 	height: 10%;
 	background: rgba(255,255,255,0.3);
-	transition: all 2s ease;
+	transition: all 1s ease;
 }
 
 #telegram:hover:before {
