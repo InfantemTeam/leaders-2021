@@ -1,3 +1,7 @@
+a{
+	text-decoration: none;
+}
+
 .card.active {
 	height: 860px;
 }
