@@ -59,7 +59,7 @@
 	margin-top: 5%;
 }
 
-.login_button input {
+.login_button button {
 	width: 100%;
 	font-size: 120%;
 	padding: 10px;
@@ -70,12 +70,12 @@
 	cursor: pointer;
 }
 
-.login_button input:active:hover {
+.login_button button:active:hover {
 	background-color: #1E80FF;
 }
 
 .submit:before {
-	content:'';
+	content:'jjjj';
 	position: absolute;
 	top: 0;
 	left: 0;
