@@ -72,10 +72,10 @@
 }
 
 .submit:before {
-	content:'jjjj';
+	content:'';
 	position: absolute;
-	margin-left: 10%;
-	margin-top: 15px;
+	margin-top: -10px;
+	margin-left: -25%;
 	width: 0;
 	height: 10%;
 	background: rgba(255,255,255,0.3);
