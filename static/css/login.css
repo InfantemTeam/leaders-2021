@@ -211,8 +211,6 @@
 #telegram:before {
 	content:'';
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 0;
 	height: 10%;
 	background: rgba(255,255,255,0.3);
