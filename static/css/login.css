@@ -53,14 +53,11 @@
 	color: #ff0000;
 }
 
-.login_button {
+
+.submit {
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 5%;
-}
-
-.login_button button {
-	width: 100%;
 	font-size: 120%;
 	padding: 10px;
 	color: #fff;
@@ -70,7 +67,7 @@
 	cursor: pointer;
 }
 
-.login_button button:active:hover {
+.submit:active:hover {
 	background-color: #1E80FF;
 }
 
