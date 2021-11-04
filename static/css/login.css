@@ -222,15 +222,12 @@
 
 .link {
 	text-align: center;
+	padding-bottom: 16px;
+	margin-top: 16px;
 }
 
 .link a {
 	text-decoration: none;
 	color: #50A0E4;
 	cursor: pointer;
-}
-
-#register_link{
-	padding-bottom: 16px;
-	margin-top: 16px;
 }
