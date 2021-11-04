@@ -74,6 +74,22 @@
 	background-color: #1E80FF;
 }
 
+.login_button input:before {
+	content:'';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: rgba(255,255,255,0.3);
+	transition: all 2s ease;
+}
+
+.login_button input:hover:before {
+	width: 100%;
+}
+
+
 .or {
 	display: flex;
 	justify-content: space-evenly;
@@ -150,6 +166,21 @@
 	margin-left: -42px;
 }
 
+#vk:before {
+	content:'';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: rgba(255,255,255,0.3);
+	transition: all 2s ease;
+}
+
+#vk:hover:before {
+	width: 100%;
+}
+
 #telegram {
 	width: 80%;
 	margin-left: 10%;
@@ -175,6 +206,21 @@
 
 #telegram .spinner {
 	margin-left: -49px;
+}
+
+#telegram:before {
+	content:'';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: rgba(255,255,255,0.3);
+	transition: all 2s ease;
+}
+
+#telegram:hover:before {
+	width: 100%;
 }
 
 .link {
