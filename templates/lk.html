@@ -3,6 +3,7 @@
 {% block head %}
 	<link rel="stylesheet" href="/static/css/lk.css">
 
+	<script src="/static/js/lk.js"></script>
 	<script src="/static/js/hamburger.js"></script>
 {% endblock %}
 
@@ -30,10 +31,12 @@
 		</div>
 
 		<div id="uinfo_edit" class="User_info">
-			<div class="User_parametr"><b>Фамилия:</b><input type="text" name="surname" class="input_login_LK" value="{{ g.user.surname }}"></div>
-			<div class="User_parametr"><b>Имя:</b><input type="text" name="name" class="input_login_LK" value="{{ g.user.name }}"></div>
-			<div class="User_parametr"><b>Email:</b><input type="email" name="login" class="input_login_LK" value="{{ g.user.login }}"></div>
-			<div class="User_parametr"><b>Дата рождения:</b><input type="text" name="date" class="input_login_LK" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'" value="{{ g.user.bdate }}"></div>
+			<form action="/edit_profile">
+				<div class="User_parametr"><b>Фамилия:</b><input type="text" name="surname" class="input_login_LK" value="{{ g.user.surname }}"></div>
+				<div class="User_parametr"><b>Имя:</b><input type="text" name="name" class="input_login_LK" value="{{ g.user.name }}"></div>
+				<div class="User_parametr"><b>Email:</b><input type="email" name="login" class="input_login_LK" value="{{ g.user.login }}"></div>
+				<div class="User_parametr"><b>Дата рождения:</b><input type="text" name="date" class="input_login_LK" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'" value="{{ g.user.bdate }}"></div>
+			</form>
 		</div>
 
 		<a id="edit_profile_button" class="edit_profile_button">Редактировать профиль</a>
