@@ -80,7 +80,7 @@
 	top: 0;
 	left: 0;
 	width: 0;
-	height: 50px;
+	height: 100%;
 	background: rgba(255,255,255,0.3);
 	transition: all 2s ease;
 }
@@ -169,10 +169,10 @@
 #vk:before {
 	content:'';
 	position: absolute;
-	top: 0;
-	left: 0;
+	margin-top: -10px;
+	margin-left: -25%;
 	width: 0;
-	height: 50px;
+	height: 10%;
 	background: rgba(255,255,255,0.3);
 	transition: all 2s ease;
 }
