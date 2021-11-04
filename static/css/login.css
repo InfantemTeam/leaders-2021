@@ -74,10 +74,10 @@
 .submit:before {
 	content:'jjjj';
 	position: absolute;
-	top: 0;
-	left: 0;
+	margin-left: 10%;
+	margin-top: 15px;
 	width: 0;
-	height: 1000px;
+	height: 10%;
 	background: rgba(255,255,255,0.3);
 	transition: all 2s ease;
 }
@@ -133,7 +133,7 @@
 
 .position_spinner{
 	position: absolute;
-	margin-top: 10px;
+	margin-top: 30px;
 	margin-left: -68.7%;
 
 }
