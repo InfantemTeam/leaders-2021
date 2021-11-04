@@ -1,20 +1,12 @@
 #!/usr/bin/env python3
 
-import csv, json, hashlib, builtins, itertools
+import csv, hmac, json, hashlib, builtins, itertools
 from . import *
+from . import ml
 from .db import *
 
 
 def groupby(n: int, l): return ((*(j for j in i if j is not None),) for i in itertools.zip_longest(*(iter(l),)*n))
-
-def with_user(f):
-	@login_required
-	async def decorated(*args, **kwargs):
-		user = User.query.filter_by(id=current_user.auth_id).first()
-		assert (user)
-		return f(user, *args, **kwargs)
-	decorated.__name__ = f.__name__  # endpoint name
-	return decorated
 
 class Book:
 	__slots__ = ('title', 'author', 'extra')
@@ -31,7 +23,8 @@ class Book:
 async def before_request():
 	g.builtins = builtins
 	g.groupby = groupby
-	g.user = current_user._LocalProxy__local()  # fix jinja3 `auto_await()` bug
+	user = User.query.filter_by(id=current_user.auth_id).first()
+	g.user = user #._LocalProxy__local()  # fix jinja3 `auto_await()` bug
 
 @app.errorhandler(Unauthorized)
 async def redirect_to_login(*_):
@@ -47,15 +40,17 @@ async def index():
 
 @app.route('/login', methods=('GET', 'POST'))
 async def login():
-	if (request.method == 'GET'): return await render_template('login.html')
+	if (request.method == 'GET'):
+		if (g.user): return redirect(url_for('index'))
+		return await render_template('login.html')
 
-	form = await request.form
-	try: email, password = form['email'], form['password']
-	except Exception as ex: return abort(400, ex)
+	try:
+		form = await request.form
+		email, password = form['email'], form['password']
+	except Exception as ex: return abort(Response(str(ex), 400))
 
 	user = User.query.filter_by(email=email).first()
-	if (not user): return abort(418)
-	if (not check_password_hash(user.password, password)): return abort(403)
+	if (not user or not check_password_hash(user.password, password)): return abort(Response("Неверный логин или пароль", 403))
 
 	login_user(AuthUser(user.id))
 
@@ -65,17 +60,24 @@ async def login():
 async def logout():
 	logout_user()
 
-	return 'OK'
+	return redirect(url_for('index'))
 
 @app.route('/register', methods=('POST',))
 async def register():
-	form = await request.form
-	try: name, surname, bdate, email, password = form['name'], form['surname'], form['bdate'], form['email'], form['password']
-	except Exception as ex: return abort(400, ex)
+	try:
+		form = await request.form
+		name, surname, bdate, email, password = form['name'], form['surname'], form['bdate'], form['email'], form['password']
+	except Exception as ex: return abort(Response(str(ex), 400))
 
-	if (User.query.filter_by(email=email).first()): return abort(409, "Пользователь уже зарегистрирован!")
+	if (User.query.filter_by(email=email).first()): return abort(Response("Пользователь уже зарегистрирован", 409))
 
-	user = User(email=email, password=generate_password_hash(password), name=name, surname=surname, bdate=bdate)
+	user = User(
+		email = email,
+		password = generate_password_hash(password),
+		name = name,
+		surname = surname,
+		bdate = bdate,
+	)
 
 	db.session.add(user)
 	db.session.commit()
@@ -88,15 +90,44 @@ async def register():
 async def oauth_vk():
 	try:
 		data = (await request.get_json())['session']
-		h, sig, u = hashlib.md5((str().join(f"{i}={data[i]}" for i in ('expire', 'mid', 'secret', 'sid')) + app.config['VK_SECRET']).encode()).hexdigest(), data['sig'], data['user']
+		h, sig, u = hashlib.md5((str().join(f"{i}={data[i]}" for i in ('expire', 'mid', 'secret', 'sid')) + app.config['VK_SECRET']).encode('utf-8')).hexdigest(), data['sig'], data['user']
 		vk_id, vk_name, vk_surname = u['id'], u['first_name'], u['last_name']
-	except Exception as ex: return abort(400, ex)
+	except Exception as ex: return abort(Response(str(ex), 400))
 
-	if (h.strip() != sig.strip()): return abort(403)
+	if (h.strip() != sig.strip()): return abort(Response("Неверный токен. Попробуйте ещё раз", 403))
 
 	user = User.query.filter_by(vk_id=vk_id).first()
 	if (not user):
-		user = User(name=vk_name, surname=vk_surname, vk_id=vk_id)
+		user = User(
+			name = vk_name,
+			surname = vk_surname,
+			vk_id = vk_id,
+		)
+		db.session.add(user)
+		db.session.commit()
+
+	login_user(AuthUser(user.id))
+
+	return 'OK'
+
+@app.route('/oauth/telegram', methods=('POST',))
+async def oauth_telegram():
+	try:
+		data = await request.get_json()
+		secret = hashlib.sha256(app.config['TELEGRAM_TOKEN'].encode('utf-8'))
+		h, sig = data['hash'], hmac.new(secret.digest(), '\n'.join(f"{k}={v}" for k, v in sorted(data.items()) if k != 'hash').encode('utf-8'), digestmod=hashlib.sha256).hexdigest()
+		telegram_id, telegram_name, telegram_surname = data['id'], data['first_name'], data['last_name']
+	except Exception as ex: return abort(Response(str(ex), 400))
+
+	if (h.strip() != sig.strip()): return abort(Response("Неверный токен. Попробуйте ещё раз", 403))
+
+	user = User.query.filter_by(telegram_id=telegram_id).first()
+	if (not user):
+		user = User(
+			name = telegram_name,
+			surname = telegram_surname,
+			telegram_id = telegram_id,
+		)
 		db.session.add(user)
 		db.session.commit()
 
@@ -110,15 +141,23 @@ async def lk():
 	return await render_template('lk.html')
 
 @app.route('/edit_profile', methods=('POST',))
-@with_user
-async def edit_profile(user):
-	form = await request.form
-	try: name, surname, email, bdate = form['name'], form['surname'], form['email'], form['bdate']
-	except Exception as ex: return abort(400, ex)
+@login_required
+async def edit_profile():
+	try:
+		form = await request.form
+		name, surname, email, bdate = form['name'], form['surname'], form['email'], form['bdate']
+	except Exception as ex: return abort(Response(str(ex), 400))
 
-	user.name, user.surname, user.email, user.bdate = name, surname, email, bdate
+	if (email):
+		user = User.query.filter_by(email=email).first()
+		if (user and user != g.user): return abort(Response("Данный E-mail уже используется", 409))
 
-	db.session.add(user)
+	if (name): g.user.name = name
+	if (surname): g.user.surname = surname
+	if (email): g.user.email = email
+	if (bdate): g.user.bdate = bdate
+
+	db.session.add(g.user)
 	db.session.commit()
 
 	return 'OK'
@@ -139,12 +178,31 @@ async def book(id):
 async def search():
 	return await render_template('search.html')
 
+@app.route('/api/recomms')
+async def api_recomms():
+	try: user_id, count = int(request.args['user_id']), int(request.args['count'])
+	except Exception as ex: return abort(Response(str(ex), 400))
+
+	return ml.model_predict(user_id, count)
+
+@app.route('/test')
+async def test():
+	if (not request.args): return '<h1>Тест рекомендаций для пользователя</h1><form action="/test">ID пользователя: <input type="number" name="id"><br>Количество: <input type="number" name="num"><br><input type="submit"></form>'
+
+	try: id, num = int(request.args['id']), int(request.args['num'])
+	except Exception as ex: return abort(Response(str(ex), 400))
+
+	recommended_books = ml.model_recommend(id, num)
+
+	return render_template_string(r"{% for i in recommended_books %}{{ book_card(i) }}{% endfor %}", recommended_books=recommended_books)
+
 
 @app.before_first_request
 def before_first_request():
 	print("Loading datasets...")
-	books = app.config['BOOKS'] = {int(i['recId']): i for i in csv.DictReader(open('data/cat_3.csv'), delimiter=';')}
+	books = app.config['BOOKS'] = {int(i['recId']): i for i in csv.DictReader(open('data/cat_3.csv', encoding='cp1251'), delimiter=';')}
 	rubrics = app.config['RUBRICS'] = {k: tuple(itertools.islice((Book(title, author, b) for i in v if (b := books.get(int(i))) and (title := b.get('title')) and (author := b.get('aut'))), 20)) for k, v in json.load(open('data/rubrics.json')).items() if k in app.config['CATEGORIES']}
+	ml.init()
 	print("Data loaded.")
 
 

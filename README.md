@@ -5,6 +5,7 @@ by InfantemTeam \<infantemteam@sdore.me>.
 
 ## Тестовый инстанс
 > ### https://leaders.sdore.me
+### Тестовая страница для проверки рекомендаций: [/test](https://leaders.sdore.me/test) (на сайте нет ссылки сюда).
 
 
 ## Установка
@@ -30,3 +31,9 @@ by InfantemTeam \<infantemteam@sdore.me>.
   _(имя директории, содержащей данный репозиторий, должно быть валидным идентификатором Python, т.е., в частности, без `-`)._
 
 Файл базы данных SQLite (`db.sqlite`) будет создан в текущей директории.
+
+
+## Получение рекомендаций
+- [/api/recomms](https://leaders.sdore.me/api/recomms)?user\_id=N&count=M — API (JSON)
+- [/test](https://leaders.sdore.me/test) — Admin
+- [/lk](https://leaders.sdore.me/lk) — User

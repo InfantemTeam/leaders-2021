@@ -6,4 +6,4 @@ set -e
 
 source .venv/bin/activate
 
-exec pip install --disable-pip-version-check -Uqr requirements.txt
+exec pip3 install --disable-pip-version-check -Uqr requirements.txt

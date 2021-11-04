@@ -4,13 +4,7 @@
 	position: absolute;
 }
 
-.User_photo img {
-	width: 250px;
-	height: 250px;
-	border-radius: 40px;
-}
-
-.container {
+.photo_container {
 	position: relative;
 	width: 250px;
 	height: 250px;
@@ -20,11 +14,12 @@
 
 .User_image {
 	display: block;
-	width: 100%;
-	height: auto;
+	width: 256px;
+	height: 256px;
+	border-radius: 40px;
 }
 
-.overlay {
+#photo_overlay {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -39,7 +34,7 @@
 	cursor: pointer;
 }
 
-.container:hover .overlay {
+.photo_container:hover #photo_overlay {
 	opacity: .5;
 }
 
@@ -62,7 +57,7 @@
 	margin-bottom: 30px;
 }
 
-.User_parametr {
+.User_parameter {
 	font-size: 120%;
 	margin-top: 2%;
 }
@@ -78,7 +73,7 @@
 	text-decoration: none;
 }
 
-#photo-input {
+#photo_input {
 	display: none;
 }
 

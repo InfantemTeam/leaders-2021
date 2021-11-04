@@ -18,19 +18,23 @@ $(document).ready(function() {
 	$('#register_form').addClass('hidden');
 	$('#login_link').addClass('hidden');
 
-	$('.submit').click(function() {
-		let form = this.parent('form');
+	$('.ajax-form').each(function() {
+		$(this).submit(function() {
+			let form = $(this);
 
-		$.ajax({
-			url: form.attr('action'),
-			method: 'POST',
-			data: form.serialize(),
-			success: function() {
-				window.location = '/';
-			},
-			complete: function(xhr, msg) {
-				if (xhr.status != 200) alert(msg);
-			}
+			$.ajax({
+				url: form.attr('action'),
+				method: 'POST',
+				data: form.serialize(),
+				success: function() {
+					window.location.reload();
+				},
+				complete: function(xhr, msg) {
+					if (xhr.status != 200) alert(xhr.responseText || msg);
+				}
+			});
+
+			return false;
 		});
 	});
 
@@ -38,16 +42,18 @@ $(document).ready(function() {
 
 	$('#vk').click(function() {
 		VK.Auth.login(function(data) {
+			if (!data || !data.session) return;
+
 			$.ajax({
 				url: '/oauth/vk',
 				method: 'POST',
 				data: JSON.stringify(data),
 				contentType: 'application/json',
 				success: function() {
-					window.location = '/';
+					window.location.reload();
 				},
 				complete: function(xhr, msg) {
-					if (xhr.status != 200) alert(msg);
+					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
 		});
@@ -58,16 +64,18 @@ $(document).ready(function() {
 			bot_id: 2051141677,
 			request_access: false,
 		}, function(data) {
+			if (!data) return;
+
 			$.ajax({
 				url: '/oauth/telegram',
 				method: 'POST',
 				data: JSON.stringify(data),
 				contentType: 'application/json',
 				success: function() {
-					window.location = '/';
+					window.location.reload();
 				},
 				complete: function(xhr, msg) {
-					if (xhr.status != 200) alert(msg);
+					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
 		});

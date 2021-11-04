@@ -17,13 +17,14 @@ class User(db.Model):
 	password = db.Column(db.String(255))
 	name = db.Column(db.String(255))
 	surname = db.Column(db.String(255))
+	bdate = db.Column(db.String(10))
 	vk_id = db.Column(db.Integer, unique=True)
 	telegram_id = db.Column(db.Integer, unique=True)
-	read_books = db.relationship('Book', secondary=readings_table)
+	read_books = db.relationship('Book', secondary=readings_table, back_populates='read_by')
 
 class Book(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	read_by = db.relationship('User', secondary=readings_table)
+	read_by = db.relationship('User', secondary=readings_table, back_populates='read_books')
 
 
 db.create_all()

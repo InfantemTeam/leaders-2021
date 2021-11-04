@@ -58,9 +58,10 @@
 
 			<ul class="menu">
 				<div class="spacer"></div>
-				<li><a href="/">Главная</a></li>
-				<li><a href="/search">Поиск</a></li>
-				<li><a href="/lk">Личный кабинет</a></li>
+				<li><a href="{{ url_for('index') }}">Главная</a></li>
+				<li><a href="{{ url_for('search') }}">Поиск</a></li>
+				<li><a href="{{ url_for('lk') }}">Личный кабинет</a></li>
+				<li><a href="{{ url_for('logout') }}">Выход</a></li>
 			</ul>
 		</div>
 	</header>
