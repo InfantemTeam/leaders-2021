@@ -9,7 +9,7 @@ by InfantemTeam \<infantemteam@sdore.me>.
 
 ## Установка
 Автоматически подготовит виртуальную среду (virtualenv) и подтянет зависимости:
-> ```shell-session
+> ```console
 > $ ./init.sh
 > ```
 
@@ -17,13 +17,13 @@ by InfantemTeam \<infantemteam@sdore.me>.
 ## Запуск
 Способ запуска стандартный для Quart.
 * **Dev (`dev.sh`):**
-  > ```shell-session
+  > ```console
   > $ PYTHONPATH=.. python3 -m ${PWD##*/}
   > ```
   (сервер запустится на unix-сокете `/tmp/leaders.sock`.)
 * **Prod (`prod.sh`):**
   > Через любой ASGI-совместимый сервер, например:
-  > ```shell-session
+  > ```console
   > $ PYTHONPATH=.. hypercorn ${PWD##*/}.app:app
   > ```
 
