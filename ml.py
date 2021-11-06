@@ -113,6 +113,11 @@ def load_data_from_files():
 
     book_readers['age']=book_readers['dateOfBirth'].apply(calculateAge)
 
+    ####
+    # print(book_readers)
+    # print(book_data.columns)
+    # print(book_circ)
+
     return (book_data, book_circ, book_readers)
 
 def model_fit(retrain=False):
@@ -152,15 +157,16 @@ def model_find_similar(book_id):
 
 def model_recommend(user_id, rec_num=5):
     """ Make raw prediction for user """
-    if user_id:
+    # check user exists and user in 2021-... circulation
+    if user_id and not book_circ[book_circ.user_id==user_id].empty:
         # If user exists, then give recommendations given on his library history
         book_indicies = book_circ[book_circ.user_id==user_id].book_id
-        if(len(book_indicies)>=rec_num):
-            ids = list(zip(book_indicies[-rec_num:],[1]*rec_num))
+        if(len(book_indicies)>=rec_num*3):
+            ids = list(zip(book_indicies[-rec_num*3:],[1]*rec_num*3))
         else:
             ids = []
             j=1
-            while len(ids)<rec_num:
+            while len(ids)<rec_num*3:
                 for i in book_indicies:
                     ids.append((i,j))
                 j+=1
@@ -168,12 +174,6 @@ def model_recommend(user_id, rec_num=5):
         # idShift = 0
         for i,j in ids:
             predictions.append(model_find_similar(i)[j])
-            # while True:
-            #     book = model_find_similar(i)[j+idShift]
-            #     if :
-            #         break
-            #     idShift+=1
-            # predictions.append(book)
         predicted_ids = []
         for i in predictions:
             predicted_ids.append(book_data[book_data.index==i].book_id.item())
@@ -184,6 +184,13 @@ def model_recommend(user_id, rec_num=5):
         book_id, counts = np.unique(book_circ.book_id, return_counts=True)
         bookFreq = pd.DataFrame(zip(book_id, counts), columns=['id','count'])
         predicted_ids = bookFreq.sort_values(by='count', ascending=[False])[:rec_num].id
+    # get age of user
+    try:
+        userAge = book_readers.loc[book_readers['abis_id']==user_id, 'age'].values[0]
+    except:
+        userAge = 99
+    # age restriction filtering
+    predicted_ids = list(filter( lambda x: book_data.loc[book_data['book_id']==x, 'ager'].values[0]<=userAge, predicted_ids ))[:rec_num]
     return predicted_ids
 
 def generate_result_csv():
