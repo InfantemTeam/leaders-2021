@@ -1,11 +1,15 @@
 {% macro book_card(book) %}
-	<a href="#" class="book">
-		<div class="book_name_image">{{ book.name }}</div>
-		<div class="book_author_image">{{ book.author }}</div>
+	<div class="book">
+		<a href="{{ url_for('book', id=book.id) }}">
+			<div class="book_img"><img src="/static/img/book.png">
+				<div class="book_name_image">{{ book.title }}</div>
+				<div class="book_author_image">{{ book.author }}</div>
+			</div>
 
-		<div class="book_name">{{ book.name }}</div>
-		<div class="book_author">{{ book.author }}</div>
-	</a>
+			<div class="book_name">{{ book.title }}</div>
+			<div class="book_author">{{ book.author }}</div>
+		</a>
+	</div>
 {% endmacro %}
 
 {% macro book_slider(books) %}
@@ -17,16 +21,7 @@
 				{% for group in books %}
 					<li class="slide">
 						{% for book in group %}
-							<div class="book">
-								<a>
-									<div class="book_img"><img src="/static/img/book.png">
-										<div class="book_name_image">{{ book.title }}</div>
-										<div class="book_author_image">{{ book.author }}</div>
-									</div>
-									<div class="book_name">{{ book.title }}</div>
-									<div class="book_author">{{ book.author }}</div>
-								</a>
-							</div>
+							{{ book_card(book) }}
 						{% endfor %}
 					</li>
 				{% endfor %}

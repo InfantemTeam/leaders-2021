@@ -13,7 +13,7 @@ from string import punctuation
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-def init():
+def init(retrain=False):
     global mystem, russian_stopwords, book_data, book_circ, book_readers, books_similarity
 
     nltk.download("stopwords")
@@ -21,8 +21,12 @@ def init():
     russian_stopwords = stopwords.words("russian")
     print("Reading CSV data...")
     book_data, book_circ, book_readers = load_data_from_files()
-    print("Updating model...")
-    books_similarity = model_fit()
+    if (retrain):
+        print("Retraining model...")
+        retrain()  # loads too
+    else:
+        print("Updating model...")
+        books_similarity = model_fit()
 
 # global vars
 book_data = None
@@ -191,12 +195,15 @@ def generate_result_csv():
     # print(output)
     output.to_csv('out.csv',sep=';',encoding='utf-8',index=False)
 
+def user_history(user_id):
+    return list(book_circ[book_circ.user_id==user_id].book_id)
+
 def transform2JSON(recommended_ids,user_id):
     """ Transform raw predictions to JSON format """
     rec_objcts=[{"id":i, \
                 "title":book_data.loc[book_data['book_id']==i,'title'].item(), \
                 "author":book_data.loc[book_data['book_id']==i,'aut'].item()} for i in recommended_ids ]
-    historical_ids = list(book_circ[book_circ.user_id==user_id].book_id)
+    historical_ids = user_history(user_id)
     hist_objcts=[{"id":i, \
                 "title":book_data.loc[book_data['book_id']==i,'title'].item(), \
                 "author":book_data.loc[book_data['book_id']==i,'aut'].item()} for i in historical_ids ]

@@ -2,6 +2,9 @@
 
 by InfantemTeam \<infantemteam@sdore.me>.
 
+## Результаты работы модели
+> ### [result_task.csv](/tree/master/result_task.csv)
+
 
 ## Тестовый инстанс
 > ### https://leaders.sdore.me

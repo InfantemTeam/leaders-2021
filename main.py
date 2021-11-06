@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import csv, hmac, json, asyncio, hashlib, builtins, itertools, threading
+import csv, hmac, json, time, asyncio, hashlib, os.path, builtins, itertools, threading
 from . import *
 from . import ml
 from .db import *
@@ -17,7 +17,7 @@ class Book:
 	extra: dict
 
 	def __init__(self, id, title, author, extra=None):
-		self.title, self.author, self.extra = title, author, extra or {}
+		self.id, self.title, self.author, self.extra = id, title, author, extra or {}
 
 	@classmethod
 	def get(cls, id):
@@ -78,7 +78,7 @@ async def login():
 
 @app.route('/login_guest', methods=('POST',))
 async def login_guest():
-	login_user(AuthUser(0))
+	login_user(AuthUser(''))
 
 	return 'OK'
 
@@ -165,10 +165,12 @@ async def oauth_telegram():
 @login_required
 async def lk():
 	recommended_books = [b for i in ml.model_recommend(g.user.id, 20) if (b := Book.get(i))]
+	print(recommended_books)
+	read_books = [b for i in ml.user_history(g.user.id) if (b := Book.get(i))]
 
 	return await render_template('lk.html',
 		recommended_books = recommended_books,
-		#read_books = read_books,
+		read_books = read_books,
 	)
 
 @app.route('/edit_profile', methods=('POST',))
@@ -234,9 +236,13 @@ async def test():
 
 def load_data():
 	print("Loading datasets...")
-	books = app.config['BOOKS'] = {int(i['recId']): i for i in csv.DictReader(open('data/cat_3.csv', encoding='cp1251'), delimiter=';')}
+	books = app.config['BOOKS'] = {int(i['recId']): i for i in itertools.chain(*(csv.DictReader(open(f"data/cat_{c}.csv", encoding='cp1251'), delimiter=';') for c in range(1, 4)))}
 	rubrics = app.config['RUBRICS'] = {k: tuple(itertools.islice((b for i in v if (b := Book.get(i))), 20)) for k, v in json.load(open('data/rubrics.json')).items() if k in app.config['CATEGORIES']}
-	ml.init()
+
+	print("Loading model...")
+	retrain = (os.path.exists('model.npy') and (time.time() - os.path.getmtime('model.npy')) >= 60*60*24)
+	ml.init(retrain=retrain)
+
 	print("Data loaded.")
 	app.loaded_flag.set()
 
