@@ -24,8 +24,8 @@
 		</div>
 
 		<div id="uinfo_display" class="User_info">
-			<div class="User_parameter"><b>Фамилия:</b> {{ g.user.surname }}</div>
-			<div class="User_parameter"><b>Имя:</b> {{ g.user.name }}</div>
+			<div class="User_parameter"><b>Фамилия:</b> {{ g.user.surname or '—' }}</div>
+			<div class="User_parameter"><b>Имя:</b> {{ g.user.name or '—' }}</div>
 			<div class="User_parameter"><b>Email:</b> {{ g.user.email or '—' }}</div>
 			<div class="User_parameter"><b>Дата рождения:</b> {{ g.user.bdate or '—' }}</div>
 		</div>
