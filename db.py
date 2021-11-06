@@ -28,6 +28,8 @@ class Book(db.Model):
 
 
 db.create_all()
+default_user = User(id=0)
+db.session.add(default_user)
 db.session.commit()
 
 # by InfantemTeam, 2021

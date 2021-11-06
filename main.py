@@ -82,7 +82,7 @@ async def login():
 
 @app.route('/login_guest', methods=('POST',))
 async def login_guest():
-	login_user(AuthUser(''))
+	login_user(AuthUser(0))
 
 	return 'OK'
 
@@ -169,7 +169,6 @@ async def oauth_telegram():
 @login_required
 async def lk():
 	recommended_books = [b for i in ml.model_recommend(g.user.id, 20) if (b := Book.get(i))]
-	print(recommended_books)
 	read_books = [b for i in ml.user_history(g.user.id) if (b := Book.get(i))]
 
 	return await render_template('lk.html',
