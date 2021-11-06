@@ -31,7 +31,7 @@ $(document).ready(function() {
 				},
 				complete: function(xhr, msg) {
 					form.find('.spinner').css({display: 'none'});
-					if (xhr.status != 200) alert(xhr.responseText || msg);
+					if (xhr.status != 200) form.find('.login_button span').text(xhr.responseText || msg);
 				}
 			});
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
 				},
 				complete: function(xhr, msg) {
 					$(this).find('.spinner').css({display: 'none'});
-					if (xhr.status != 200) alert(xhr.responseText || msg);
+					if (xhr.status != 200) $(this).find('.login_button span').text(xhr.responseText || msg);
 				}
 			});
 
@@ -82,7 +82,7 @@ $(document).ready(function() {
 				},
 				complete: function(xhr, msg) {
 					$(this).find('.spinner').css({display: 'none'});
-					if (xhr.status != 200) alert(xhr.responseText || msg);
+					if (xhr.status != 200) $(this).find('.login_button span').text(xhr.responseText || msg);
 				}
 			});
 
