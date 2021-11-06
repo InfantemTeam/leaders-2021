@@ -143,6 +143,7 @@ def retrain():
 def model_find_similar(book_id):
     """ Find similar books for given book ID """
     max_pred = 100
+    book_id = book_data[book_data.book_id==book_id].index.values.tolist()[0]
     similarity = list(enumerate(books_similarity[book_id]))
     similarity = sorted(similarity, key=lambda x: x[1], reverse=True)
     similarity = similarity[1:max_pred]
@@ -166,9 +167,9 @@ def model_recommend(user_id, rec_num=5):
         predictions = []
         # idShift = 0
         for i,j in ids:
-            predictions.append(model_find_similar(book_data[book_data.book_id==i].index.values.tolist()[0])[j])
+            predictions.append(model_find_similar(i)[j])
             # while True:
-            #     book = model_find_similar(book_data[book_data.book_id==i].index.values.tolist()[0])[j+idShift]
+            #     book = model_find_similar(i)[j+idShift]
             #     if :
             #         break
             #     idShift+=1
