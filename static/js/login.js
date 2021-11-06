@@ -30,11 +30,12 @@ $(document).ready(function() {
 					window.location.reload();
 				},
 				complete: function(xhr, msg) {
+					form.find('.spinner').css({display: 'none'});
 					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
 
-			form.find('.spinner').addClass('shown');
+			form.find('.spinner').css({display: 'initial'});
 
 			return false;
 		});
@@ -55,11 +56,12 @@ $(document).ready(function() {
 					window.location.reload();
 				},
 				complete: function(xhr, msg) {
+					$(this).find('.spinner').css({display: 'none'});
 					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
 
-			$(this).find('.spinner').addClass('shown');
+			$(this).find('.spinner').css({display: 'initial'});
 		});
 	});
 
@@ -79,11 +81,12 @@ $(document).ready(function() {
 					window.location.reload();
 				},
 				complete: function(xhr, msg) {
+					$(this).find('.spinner').css({display: 'none'});
 					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
 
-			$(this).find('.spinner').addClass('shown');
+			$(this).find('.spinner').css({display: 'initial'});
 		});
 	});
 })

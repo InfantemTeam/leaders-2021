@@ -7,7 +7,7 @@ form {
 }
 
 .spinner {
-	//display: none;
+	display: none;
 	position: absolute;
 	margin-top: -5px;
 	left: 12%;
