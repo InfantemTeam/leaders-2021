@@ -17,6 +17,10 @@ body {
 	display: none;
 }
 
+.shown {
+	display: initial;
+}
+
 .material-icons {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -177,12 +181,12 @@ footer {
 
 .card {
 	padding-top: 20px;
+	padding-bottom: 20px;
 	position: relative;
 	top: 100px;
 	margin-bottom: 100px;
 	width: 37%;
 	margin-left: 31%;
-	height: 640px;
 	box-shadow: 0 0 20px #DCDCDC;
 }
 

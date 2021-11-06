@@ -1,51 +1,10 @@
-{% macro book_card(book) %}
-	<a href="#" class="book">
-		<div class="book_name_image">{{ book.name }}</div>
-		<div class="book_author_image">{{ book.author }}</div>
-
-		<div class="book_name">{{ book.name }}</div>
-		<div class="book_author">{{ book.author }}</div>
-	</a>
-{% endmacro %}
-
-{% macro book_slider(books) %}
-	<div class="block-for-slider">
-		<div class="slider-viewport">
-			{% set books = g.builtins.tuple(g.groupby(5, books)) %}
-
-			<ul class="slidewrapper" style="width: calc(100% * {{ books | length }})">
-				{% for group in books %}
-					<li class="slide">
-						{% for book in group %}
-							<div class="book">
-								<a>
-									<div class="book_img"><img src="/static/img/book.png">
-										<div class="book_name_image">{{ book.title }}</div>
-										<div class="book_author_image">{{ book.author }}</div>
-									</div>
-									<div class="book_name">{{ book.title }}</div>
-									<div class="book_author">{{ book.author }}</div>
-								</a>
-							</div>
-						{% endfor %}
-					</li>
-				{% endfor %}
-			</ul>
-
-			<div class="prev-next-btns">
-				<div class="prev-btn"><span class="material-icons">arrow_back</span></div>
-				<div class="next-btn"><span class="material-icons">arrow_forward</span></div>
-			</div>
-		</div>
-	</div>
-{% endmacro %}
-
-
 {% extends "base.html" %}
+
+{% from "common.html" import book_card, book_slider %}
 
 {% block body %}
 	<header>
-		<a href="/" class="logo"><img src="/static/img/logo.svg">Библиотеки Москвы</a>
+		<a href="/" class="logo"><img src="/static/img/logo.svg">Библиотеки Москвы{% if g.user %}<i style="color: lightgray"> — user #{{ g.user.id }}</i>{% endif %}</a>
 		<div class="border_menu"></div>
 		<div class="menuToggle">
 			<div class="name">Меню</div>

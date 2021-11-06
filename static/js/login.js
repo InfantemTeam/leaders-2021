@@ -34,6 +34,8 @@ $(document).ready(function() {
 				}
 			});
 
+			form.find('.spinner').addClass('shown');
+
 			return false;
 		});
 	});
@@ -56,6 +58,8 @@ $(document).ready(function() {
 					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
+
+			$(this).find('.spinner').addClass('shown');
 		});
 	});
 
@@ -78,6 +82,8 @@ $(document).ready(function() {
 					if (xhr.status != 200) alert(xhr.responseText || msg);
 				}
 			});
+
+			$(this).find('.spinner').addClass('shown');
 		});
 	});
 })

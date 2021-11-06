@@ -19,49 +19,62 @@
 		<div class="login_title">Доступ к информационным ресурсам города Москвы</div>
 		<div class="login_subtitle">Вход на Официальный сайт Мэра Москвы</div>
 
-		<form id="login_form" class="ajax-form" action="/login">
-			<input type="text" name="email" class="input_login" placeholder="Email">
-			<input type="password" name="password" class="input_login" placeholder="Пароль">
+		<form id="login_form" class="form_block ajax-form" action="/login">
+			<input type="text" name="email" class="input_login" placeholder="Email (или id пользователя)" required>
+			<input type="password" name="password" class="input_login" placeholder="Пароль (можно оставить пустым)">
 
-			<div class="login_button popup-link">
-				<input type="submit" value="Войти">
-				<img src="/static/img/spinner.gif" class="spinner position_spinner">
-			</div>
+			<input type="submit" id="login_submit" class="hidden">
+			<label for="login_submit">
+				<div class="login_button">
+					Войти
+					<img src="/static/img/spinner.gif" class="spinner position_spinner">
+				</div>
+			</label>
 		</form>
 
-		<a href="/lk"><button class="submit" id="guest_button">Войти как гость</button></a>
+		<form id="register_form" class="form_block ajax-form" action="/register">
+			<input type="text" name="name" class="input_login" placeholder="Имя" required>
+			<input type="text" name="surname" class="input_login" placeholder="Фамилия" required>
+			<input type="text" name="bdate" class="input_login" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'" required>
+			<input type="text" name="email" class="input_login" placeholder="Email" required>
+			<input type="password" name="password" class="input_login" placeholder="Пароль" required>
 
-		<form id="register_form" class="ajax-form" action="/register">
-			<input type="text" name="name" class="input_login" placeholder="Имя">
-			<input type="text" name="surname" class="input_login" placeholder="Фамилия">
-			<input type="text" name="bdate" class="input_login" placeholder="Дата рождения" onfocus="this.type = 'date'" onblur="this.type = 'text'">
-			<input type="text" name="email" class="input_login" placeholder="Email">
-			<input type="password" name="password" class="input_login" placeholder="Пароль">
-
-			<div class="login_button popup-link">
-				<input type="submit" value="Зарегистрироваться">
-				<img src="/static/img/spinner.gif" class="spinner position_spinner">
-			</div>
+			<input type="submit" id="register_submit" class="hidden">
+			<label for="register_submit">
+				<div class="login_button">
+					Зарегистрироваться
+					<img src="/static/img/spinner.gif" class="spinner position_spinner">
+				</div>
+			</label>
 		</form>
 
 		<div class="or">или</div>
 
-		<button id="vk" class="popup-link">
-			<img src="/static/img/spinner.gif" class="spinner">
-			Войти через ВКонтакте
-			<img src="/static/img/vk.svg" class="logo">
-		</button>
+		<form id="guest_form" class="form_block ajax-form" action="/login_guest">
+			<input type="submit" id="guest_submit" class="hidden">
+			<label for="guest_submit">
+				<div class="login_button">
+					Войти как гость
+					<img src="/static/img/spinner.gif" class="spinner position_spinner">
+				</div>
+			</label>
+		</form>
 
-		<button id="telegram" class="popup-link">
-			<img src="/static/img/spinner.gif" class="spinner">
-			Войти через Telegram
-			<img src="/static/img/telegram.svg" class="logo">
-		</button>
+		<div class="form_block">
+			<button id="vk" class="login_button">
+				<img src="/static/img/spinner.gif" class="spinner">
+				Войти через ВКонтакте
+				<img src="/static/img/vk.svg" class="logo">
+			</button>
 
-		<div id="register_link"><div class="link">Впервые на сайте? <a id="show_reg">Зарегистрироваться</a></div>
+			<button id="telegram" class="login_button">
+				<img src="/static/img/spinner.gif" class="spinner">
+				Войти через Telegram
+				<img src="/static/img/telegram.svg" class="logo">
+			</button>
 		</div>
-		<div id="guest_link"><div class="link">Войти как пользователь<a id="show_reg">Зарегистрироваться</a></div>
-		</div>
+
+		<div id="register_link"><div class="link">Впервые на сайте? <a id="show_reg">Зарегистрироваться</a></div></div>
 		<div id="login_link"><div class="link">Уже были на нашем сайте? <a id="hide_reg">Войти</a></div></div>
 	</div>
 {% endblock %}

@@ -19,7 +19,9 @@ def init():
     nltk.download("stopwords")
     mystem = Mystem()
     russian_stopwords = stopwords.words("russian")
+    print("Reading CSV data...")
     book_data, book_circ, book_readers = load_data_from_files()
+    print("Updating model...")
     books_similarity = model_fit()
 
 # global vars
@@ -61,12 +63,12 @@ def load_data_from_files():
     """ Load dataset, preparing and transforming in pd.DataFrames """
 
     # READ FILES INTO VARIABLES WITH SAME NAME AS FILES
-    cat1 = pd.read_csv('dataset/cat_1.csv',sep=';',encoding = "windows-1251",low_memory=False)
-    cat2 = pd.read_csv('dataset/cat_2.csv',sep=';',encoding = "windows-1251",low_memory=False)
-    cat3 = pd.read_csv('dataset/cat_3.csv',sep=';',encoding = "windows-1251",low_memory=False)
-    dataset_knigi_1 = pd.read_csv('dataset/dataset_knigi_1.csv',sep=';',encoding = "windows-1251",low_memory=False)
-    book_readers = pd.read_csv('dataset/readers.csv',sep=';',encoding = "windows-1251",low_memory=False)
-    annotation = pd.read_csv('dataset/annotation.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    cat1 = pd.read_csv('data/cat_1.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    cat2 = pd.read_csv('data/cat_2.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    cat3 = pd.read_csv('data/cat_3.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    dataset_knigi_1 = pd.read_csv('data/dataset_knigi_1.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    book_readers = pd.read_csv('data/readers.csv',sep=';',encoding = "windows-1251",low_memory=False)
+    annotation = pd.read_csv('data/annotation.csv',sep=';',encoding = "windows-1251",low_memory=False)
 
     # CONCAT _1, _2, _3... FILES IN ONE
     cat = pd.concat([cat1,cat2,cat3],ignore_index=True)

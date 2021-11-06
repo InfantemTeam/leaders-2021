@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import csv, hmac, json, hashlib, builtins, itertools
+import csv, hmac, json, asyncio, hashlib, builtins, itertools, threading
 from . import *
 from . import ml
 from .db import *
@@ -9,20 +9,30 @@ from .db import *
 def groupby(n: int, l): return ((*(j for j in i if j is not None),) for i in itertools.zip_longest(*(iter(l),)*n))
 
 class Book:
-	__slots__ = ('title', 'author', 'extra')
+	__slots__ = ('id', 'title', 'author', 'extra')
 
+	id: int
 	title: str
 	author: str
 	extra: dict
 
-	def __init__(self, title, author, extra=None):
+	def __init__(self, id, title, author, extra=None):
 		self.title, self.author, self.extra = title, author, extra or {}
 
+	@classmethod
+	def get(cls, id):
+		if (not (b := app.config['BOOKS'].get(id))): return None
+		if (not (title := b.get('title'))): return None
+		if (not (author := b.get('aut'))): return None
+		return cls(id, title, author, b)
 
 @app.before_request
 async def before_request():
+	await app.loaded_flag.wait()
+
 	g.builtins = builtins
 	g.groupby = groupby
+
 	user = User.query.filter_by(id=current_user.auth_id).first()
 	g.user = user #._LocalProxy__local()  # fix jinja3 `auto_await()` bug
 
@@ -49,10 +59,26 @@ async def login():
 		email, password = form['email'], form['password']
 	except Exception as ex: return abort(Response(str(ex), 400))
 
-	user = User.query.filter_by(email=email).first()
-	if (not user or not check_password_hash(user.password, password)): return abort(Response("Неверный логин или пароль", 403))
+	user = None
+
+	if (email.isdecimal()):
+		user = User.query.filter_by(id=int(email)).first()
+		password = True
+	else:
+		user = User.query.filter_by(email=email).first()
+
+	if (not user or not (password is True or check_password_hash(user.password, password))):
+		#app.logger.info
+		print(f"Failed login attempt ({email}): incorrect {'password' if (user) else 'login'}.")
+		return abort(Response("Неверный логин или пароль", 403))
 
 	login_user(AuthUser(user.id))
+
+	return 'OK'
+
+@app.route('/login_guest', methods=('POST',))
+async def login_guest():
+	login_user(AuthUser(0))
 
 	return 'OK'
 
@@ -138,7 +164,12 @@ async def oauth_telegram():
 @app.route('/lk')
 @login_required
 async def lk():
-	return await render_template('lk.html')
+	recommended_books = [b for i in ml.model_recommend(g.user.id, 20) if (b := Book.get(i))]
+
+	return await render_template('lk.html',
+		recommended_books = recommended_books,
+		#read_books = read_books,
+	)
 
 @app.route('/edit_profile', methods=('POST',))
 @login_required
@@ -165,12 +196,14 @@ async def edit_profile():
 @app.route('/book/<int:id>')
 @login_required
 async def book(id):
-	try: book = app.config['BOOKS'][id]
+	try: book = Book.get(id)
 	except KeyError: return abort(404)
+
+	similar_books = [b for i in ml.model_find_similar(id) if (b := Book.get(i))]
 
 	return await render_template('book.html',
 		book = book,
-		similar_books = [Book('TODO', f"The Developer: Vol.{i}") for i in range(20)],
+		similar_books = similar_books,
 	)
 
 @app.route('/search')
@@ -192,19 +225,25 @@ async def test():
 	try: id, num = int(request.args['id']), int(request.args['num'])
 	except Exception as ex: return abort(Response(str(ex), 400))
 
-	recommended_books = ml.model_recommend(id, num)
+	recommended_books = [b for i in ml.model_recommend(id, num) if (b := Book.get(i))]
 
-	return render_template_string(r"{% for i in recommended_books %}{{ book_card(i) }}{% endfor %}", recommended_books=recommended_books)
+	return await render_template_string(r'{% from "common.html" import book_card %}{% for i in recommended_books %}{{ book_card(i) }}{% endfor %}',
+		recommended_books = recommended_books,
+	)
 
 
-@app.before_first_request
-def before_first_request():
+def load_data():
 	print("Loading datasets...")
 	books = app.config['BOOKS'] = {int(i['recId']): i for i in csv.DictReader(open('data/cat_3.csv', encoding='cp1251'), delimiter=';')}
-	rubrics = app.config['RUBRICS'] = {k: tuple(itertools.islice((Book(title, author, b) for i in v if (b := books.get(int(i))) and (title := b.get('title')) and (author := b.get('aut'))), 20)) for k, v in json.load(open('data/rubrics.json')).items() if k in app.config['CATEGORIES']}
+	rubrics = app.config['RUBRICS'] = {k: tuple(itertools.islice((b for i in v if (b := Book.get(i))), 20)) for k, v in json.load(open('data/rubrics.json')).items() if k in app.config['CATEGORIES']}
 	ml.init()
 	print("Data loaded.")
+	app.loaded_flag.set()
 
+@app.before_serving
+def before_serving():
+	app.loaded_flag = asyncio.Event()
+	threading.Thread(target=load_data, daemon=True).start()
 
 # by InfantemTeam, 2021
 # infantemteam@sdore.me
