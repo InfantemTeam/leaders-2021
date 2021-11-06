@@ -63,6 +63,10 @@ async def login():
 
 	if (email.isdecimal()):
 		user = User.query.filter_by(id=int(email)).first()
+		if (not user):
+			user = User(id=int(email))
+			db.session.add(user)
+			db.session.commit()
 		password = True
 	else:
 		user = User.query.filter_by(email=email).first()
